@@ -1,3 +1,3 @@
 # ContactsApp
 
-![alt text](screenshots/filename.png "Описание будет тут")
+![Contacts App](Screenshot_2.png "Contacts App")
