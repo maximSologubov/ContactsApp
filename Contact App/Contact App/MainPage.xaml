@@ -10,7 +10,7 @@
         
         <StackLayout Spacing="20" Padding="50" VerticalOptions="Center">
 
-            <StackLayout Spacing="20" Padding="0, 100, 0, 200" VerticalOptions="Center">
+            <StackLayout Spacing="20" Padding="0, 100, 0, 195" VerticalOptions="Center">
                 <Entry Placeholder="Login"></Entry>
                 <Entry Placeholder="Password" IsPassword="True"></Entry>
             </StackLayout>
