@@ -15,8 +15,18 @@
                 <Entry Placeholder="Password" IsPassword="True"></Entry>
             </StackLayout>
 
-            <Button Text="SIGN IN" TextColor="#696969"  BackgroundColor="#D2691E" BorderWidth="1" BorderColor="#696969"></Button>
-            <Label Text="SIGN UP" HorizontalTextAlignment="Center"  Padding="30,0,30,10" FontSize="14" TextColor="Blue" TextDecorations="Underline"/>
+            <Button Text="SIGN IN" 
+                    TextColor="#696969"  
+                    BackgroundColor="#D2691E" 
+                    BorderWidth="1" 
+                    IsEnabled="False"
+                    BorderColor="#696969" ></Button>
+            <Label Text="SIGN UP" 
+                   HorizontalTextAlignment="Center"  
+                   Padding="30,0,30,10" 
+                   FontSize="14" 
+                   TextColor="Blue"                   
+                   TextDecorations="Underline"/>
         </StackLayout>
     </StackLayout>
 
