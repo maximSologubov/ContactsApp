@@ -1,4 +1,5 @@
-﻿using Prism.Ioc;
+﻿using Prism;
+using Prism.Ioc;
 using Prism.Unity;
 using System;
 using Xamarin.Forms;
@@ -8,7 +9,7 @@ namespace Contact_App
 {
     public partial class App : PrismApplication
     {
-        public App()
+        public App(IPlatformInitializer initializer = null) : base(initializer) 
         {
             InitializeComponent();
 
