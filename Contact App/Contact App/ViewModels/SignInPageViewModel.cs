@@ -22,7 +22,8 @@ namespace Contact_App.ViewModels
            
         }
 
-        public ICommand SingInTapCommand => new DelegateCommand(OnSignInAsync);
+        //public ICommand SingInTapCommand => new DelegateCommand(OnSignInAsync);
+        public DelegateCommand SignUpButtonTapCommand => new DelegateCommand(OnSignInAsync);
 
 
         #region --- Public Properties ---
@@ -53,6 +54,8 @@ namespace Contact_App.ViewModels
         public INavigation Navigation { get; set; }
 
         #endregion
+
+
 
         #region --- Private Helpers ---
 

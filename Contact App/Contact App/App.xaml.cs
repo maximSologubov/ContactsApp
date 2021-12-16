@@ -51,7 +51,7 @@ namespace Contact_App
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync($"{nameof(SignUpPage)}");
+            NavigationService.NavigateAsync($"{nameof(SignInPage)}");
           
             
 

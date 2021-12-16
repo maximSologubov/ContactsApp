@@ -26,12 +26,12 @@
             <Entry Placeholder="{x:Static resources:Resource.ConfirmPasswordText}"                   
                    IsPassword="True"
                    ClearButtonVisibility="WhileEditing"                   
-                   Text="{Binding UserConfirmPassword}"/>
+                   Text="{Binding ConfirmPassword}"/>
         </StackLayout>
 
         <StackLayout Grid.Row="1" 
                      Margin="30">
-            <Button Text="{x:Static resources:Resource.SignInButtonText}" 
+            <Button Text="{x:Static resources:Resource.SignUpButtonText}" 
                     BackgroundColor="#D2691E" 
                     BorderWidth="1" 
                     BorderColor="#696969"

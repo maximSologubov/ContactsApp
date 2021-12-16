@@ -9,6 +9,7 @@ using Contact_App.Resources;
 using Contact_App.Models;
 using Contact_App.ViewModels;
 using Prism.Mvvm;
+using System.ComponentModel;
 
 namespace Contact_App.ViewModels
 {
@@ -27,8 +28,8 @@ namespace Contact_App.ViewModels
         private string _login;
         private string _password;
         private string _confirmPassword;
-        private bool _IsButtonSignInEnabled;
-        private IRegistration registrationService;
+        private bool _IsButtonSignUpEnabled = false;
+        private IRegistration registration;
 
 
         #endregion
@@ -64,10 +65,10 @@ namespace Contact_App.ViewModels
             get => _confirmPassword;
             set => SetProperty(ref _confirmPassword, value);
         }
-        public bool IsButtonSignInEnabled
+        public bool IsButtonSignUpEnabled 
         {
-            get => _IsButtonSignInEnabled;
-            set => SetProperty(ref _IsButtonSignInEnabled, value);
+            get => _IsButtonSignUpEnabled;
+            set => SetProperty(ref _IsButtonSignUpEnabled, value);
         }
 
         #endregion
@@ -77,7 +78,7 @@ namespace Contact_App.ViewModels
 
         private async void RegistrationNewUser()
         {
-            CodeUserAuthResult result = await registrationService.IsRegistration(Login, Password, ConfirmPassword);
+            CodeUserAuthResult result = await registration.IsRegistration(Login, Password, ConfirmPassword);
 
             switch (result)
             {
@@ -120,8 +121,25 @@ namespace Contact_App.ViewModels
             }
         }
 
-        private bool CanExecute() => IsButtonSignInEnabled;
+        private bool CanExecute() => _IsButtonSignUpEnabled;
 
+        #endregion
+        #region --- Overrides ---
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (args.PropertyName == nameof(Login) || args.PropertyName == nameof(Password) || args.PropertyName == nameof(ConfirmPassword))
+            {
+                if (!string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(ConfirmPassword))
+                {
+                    IsButtonSignUpEnabled = true;
+                }
+                else
+                {
+                    IsButtonSignUpEnabled = false;
+                }
+            }
+        }
         #endregion
 
     }

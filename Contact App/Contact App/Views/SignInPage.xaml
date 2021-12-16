@@ -44,8 +44,8 @@
                               TextColor="Blue" 
                               TextDecorations="Underline"
                               FontSize="Medium">
-                            <Span.GestureRecognizers>                               
-                                <TapGestureRecognizer Command="{Binding SignInCommand}" />
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnSignInAsync}" />
                             </Span.GestureRecognizers>
                         </Span>
                     </FormattedString>
