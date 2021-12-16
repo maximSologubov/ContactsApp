@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"             
+             xmlns:resources="clr-namespace:Contact_App.Resources"
+             x:Class="Contact_App.Views.SignUpPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+
+        <StackLayout  Margin="30" 
+                      VerticalOptions="Center" 
+                      Spacing="15">
+            <Entry Placeholder="{x:Static resources:Resource.LoginText}"                  
+                   ClearButtonVisibility="WhileEditing"                  
+                   Text="{Binding Login}"/>
+            <Entry Placeholder="{x:Static resources:Resource.PasswordText}"                    
+                   IsPassword="True"
+                   ClearButtonVisibility="WhileEditing"                  
+                   Text="{Binding Password}"/>
+            <Entry Placeholder="{x:Static resources:Resource.ConfirmPasswordText}"                   
+                   IsPassword="True"
+                   ClearButtonVisibility="WhileEditing"                   
+                   Text="{Binding UserConfirmPassword}"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" 
+                     Margin="30">
+            <Button Text="{x:Static resources:Resource.SignInButtonText}" 
+                    BackgroundColor="#D2691E" 
+                    BorderWidth="1" 
+                    BorderColor="#696969"
+                    Command="{Binding SingUpTapCommand}"
+                    IsEnabled="{Binding IsButtonSignUpEnabled}">
+            </Button>
+        </StackLayout>
+    </Grid>
+</ContentPage>

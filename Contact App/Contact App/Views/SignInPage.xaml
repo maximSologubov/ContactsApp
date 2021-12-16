@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:resources="clr-namespace:Contact_App.Resources"
+             x:Class="Contact_App.Views.SignInPage">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout  Margin="30" 
+                      VerticalOptions="Center" 
+                      Spacing="15">
+            <Entry Placeholder="Login"                    
+                   ClearButtonVisibility="WhileEditing"
+                   Text="{Binding Login}"/>            
+            <Entry Placeholder="Password"                   
+                   IsPassword="True" 
+                   ClearButtonVisibility="WhileEditing"
+                   Text="{Binding Password}"
+                   TextColor="{x:DynamicResource PrimaryTextColor}"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" 
+                     Margin="30">
+
+            <Button Text="{x:Static resources:Resource.SignInButtonText}" 
+                    BackgroundColor="#D2691E" 
+                    BorderWidth="1" 
+                    BorderColor="#696969"
+                    Command="{Binding SingInTapCommand}"
+                    IsEnabled="{Binding IsButtonSignInEnabled}">
+            </Button>
+            
+            <Label HorizontalOptions="Center" 
+                   VerticalOptions="CenterAndExpand" IsEnabled="False">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{x:Static resources:Resource.SignUpButtonText}" 
+                              TextColor="Blue" 
+                              TextDecorations="Underline"
+                              FontSize="Medium">
+                            <Span.GestureRecognizers>                               
+                                <TapGestureRecognizer Command="{Binding SignInCommand}" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>
