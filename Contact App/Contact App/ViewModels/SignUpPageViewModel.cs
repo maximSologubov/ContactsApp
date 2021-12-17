@@ -24,7 +24,7 @@ namespace Contact_App.ViewModels
         }
 
 
-        #region Private fields
+        #region --- Private fields ---
 
         private string _login;
         private string _password;
@@ -34,14 +34,13 @@ namespace Contact_App.ViewModels
 
         #endregion
 
-
-        #region Commands
+        #region --- Commands ---
 
         public DelegateCommand SingUpTapCommand => new DelegateCommand(RegistrationNewUser);
 
         #endregion
 
-        #region Properties
+        #region  --- Properties ---
 
         public string Login
         {
@@ -66,8 +65,7 @@ namespace Contact_App.ViewModels
 
         #endregion
 
-
-        #region Private helpers
+        #region  --- Private helpers ---
 
         private async void RegistrationNewUser()
         {
@@ -78,29 +76,29 @@ namespace Contact_App.ViewModels
                 switch (result)
                 {
                     case CodeUserAuthResult.InvalidLogin:
-                        //UserDialogs.Instance.Alert(Resource.INVALID_LOGIN);
+                        App.Current.MainPage.DisplayAlert("", Resource.INVALID_LOGIN, "ОK");
                         Login = "";
                         Password = "";
                         ConfirmPassword = "";
                         break;
                     case CodeUserAuthResult.InvalidPassword:
-                        //UserDialogs.Instance.Alert(Resource.INVALID_PASSWORD);
+                        App.Current.MainPage.DisplayAlert("", Resource.INVALID_PASSWORD, "ОK");
                         Password = "";
                         ConfirmPassword = "";
                         break;
                     case CodeUserAuthResult.PasswordMismatch:
-                        //UserDialogs.Instance.Alert(Resource.PASSWORD_MISMATCH);
+                        App.Current.MainPage.DisplayAlert("", Resource.PASSWORD_MISMATCH, "ОK");
                         Password = "";
                         ConfirmPassword = "";
                         break;
                     case CodeUserAuthResult.LoginTaken:
-                        //UserDialogs.Instance.Alert(Resource.LOGIN_TAKEN);
+                        App.Current.MainPage.DisplayAlert("", Resource.LOGIN_TAKEN, "ОK");
                         Login = "";
                         Password = "";
                         ConfirmPassword = "";
                         break;
                     case CodeUserAuthResult.Passed:
-                        //UserDialogs.Instance.Alert(Resource.AUTHETICATION_SUCCESS);
+                        App.Current.MainPage.DisplayAlert("", Resource.AUTHETICATION_SUCCESS, "ОK");
                         await DbService.InsertDataAsync(new UserModel
                         {
                             Login = Login,
@@ -121,9 +119,8 @@ namespace Contact_App.ViewModels
             }
         }
 
-        //private bool CanExecute() => _IsButtonSignUpEnabled;
-
         #endregion
+
         #region --- Overrides ---
         protected override void OnPropertyChanged(PropertyChangedEventArgs args)
         {

@@ -86,7 +86,6 @@ namespace Contact_App.ViewModels
 
         #endregion
 
-
         #region --- Private Helpers ---
 
         private async void GoSignUp() => await _navigationService.NavigateAsync(nameof(SignUpPage));
@@ -110,8 +109,8 @@ namespace Contact_App.ViewModels
                 //Password = "";
             }
             else
-            {
-                //UserDialogs.Instance.Alert(Resource.INVALID_LOGIN_OR_PASSWORD);
+            {               
+                App.Current.MainPage.DisplayAlert("", Resource.INVALID_LOGIN_OR_PASSWORD, "ОK");
                 Password = "";
             }
         }

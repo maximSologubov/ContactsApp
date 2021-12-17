@@ -117,6 +117,15 @@ namespace Contact_App.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Invalid login or password!.
         /// </summary>
+        internal static string INVALID_LOGIN_OR_PASSWORD {
+            get {
+                return ResourceManager.GetString("INVALID_LOGIN_OR_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid login or password!.
+        /// </summary>
         internal static string INVALID_PASSWORD {
             get {
                 return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
