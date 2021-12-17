@@ -153,6 +153,9 @@
   <data name="SignInButtonText" xml:space="preserve">
     <value>SIGN IN</value>
   </data>
+  <data name="SignInTitlePage" xml:space="preserve">
+    <value>Users SignIn</value>
+  </data>
   <data name="SignUpButtonText" xml:space="preserve">
     <value>SIGN UP</value>
   </data>

@@ -4,6 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"             
              xmlns:resources="clr-namespace:Contact_App.Resources"
+             Title="Sign Up"
              x:Class="Contact_App.Views.SignUpPage">
 
     <Grid>

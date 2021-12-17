@@ -7,7 +7,7 @@ using Contact_App.Validators;
 using Contact_App.Models;
 using System.Linq;
 
-namespace Contact_App.Registration
+namespace Contact_App.Services.Registration
 {
     public class Registration : IRegistration
     {
@@ -36,11 +36,6 @@ namespace Contact_App.Registration
                 return CodeUserAuthResult.LoginTaken;
 
             return CodeUserAuthResult.Passed;
-        }
-
-        Task<CodeUserAuthResult> IRegistration.IsRegistration(string login, string password, string confirmPassword)
-        {
-            throw new NotImplementedException();
         }
     }
 }

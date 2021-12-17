@@ -1,5 +1,5 @@
 ﻿//using Acr.UserDialogs;
-using Contact_App.Registration;
+using Contact_App.Services.Registration;
 using Contact_App.ServiceData;
 using Contact_App.Services.DbService;
 using Prism.Commands;
@@ -10,16 +10,17 @@ using Contact_App.Models;
 using Contact_App.ViewModels;
 using Prism.Mvvm;
 using System.ComponentModel;
+using System;
 
 namespace Contact_App.ViewModels
 {
-    public class SignUpPageViewModel : BindableBase //ViewModelBase
+    public class SignUpPageViewModel : ViewModelBase
     {
         INavigationService _navigationService;
-        public SignUpPageViewModel(INavigationService navigationService/*, IDbService _dbService, IRegistration registration*/) //: base(navigationService, _dbService)
+        public SignUpPageViewModel(INavigationService navigationService, IRegistration registration, IDbService _dbService) : base(navigationService, _dbService)
          {
             _navigationService = navigationService;
-            //registrationService = registration;
+            _registration = registration;
         }
 
 
@@ -29,22 +30,14 @@ namespace Contact_App.ViewModels
         private string _password;
         private string _confirmPassword;
         private bool _IsButtonSignUpEnabled = false;
-        private IRegistration registration;
-
+        private IRegistration _registration;
 
         #endregion
 
 
-        //INavigationService _navigationService;
-
-        //public ICommand SignUpCommand { protected set; get; }
-        //public INavigation Navigation { get; set; }
-
-
-
         #region Commands
 
-        public DelegateCommand SignUpButtonTapCommand => new DelegateCommand(RegistrationNewUser, CanExecute);
+        public DelegateCommand SingUpTapCommand => new DelegateCommand(RegistrationNewUser);
 
         #endregion
 
@@ -78,50 +71,57 @@ namespace Contact_App.ViewModels
 
         private async void RegistrationNewUser()
         {
-            CodeUserAuthResult result = await registration.IsRegistration(Login, Password, ConfirmPassword);
+            try
+            {               
+                CodeUserAuthResult result = await _registration.IsRegistration(Login, Password, ConfirmPassword);
 
-            switch (result)
+                switch (result)
+                {
+                    case CodeUserAuthResult.InvalidLogin:
+                        //UserDialogs.Instance.Alert(Resource.INVALID_LOGIN);
+                        Login = "";
+                        Password = "";
+                        ConfirmPassword = "";
+                        break;
+                    case CodeUserAuthResult.InvalidPassword:
+                        //UserDialogs.Instance.Alert(Resource.INVALID_PASSWORD);
+                        Password = "";
+                        ConfirmPassword = "";
+                        break;
+                    case CodeUserAuthResult.PasswordMismatch:
+                        //UserDialogs.Instance.Alert(Resource.PASSWORD_MISMATCH);
+                        Password = "";
+                        ConfirmPassword = "";
+                        break;
+                    case CodeUserAuthResult.LoginTaken:
+                        //UserDialogs.Instance.Alert(Resource.LOGIN_TAKEN);
+                        Login = "";
+                        Password = "";
+                        ConfirmPassword = "";
+                        break;
+                    case CodeUserAuthResult.Passed:
+                        //UserDialogs.Instance.Alert(Resource.AUTHETICATION_SUCCESS);
+                        await DbService.InsertDataAsync(new UserModel
+                        {
+                            Login = Login,
+                            Password = Password
+                        });
+
+                        NavigationParameters parameter = new NavigationParameters
+                        {
+                            { "login", Login }
+                        };
+                        await NavigationService.NavigateAsync(nameof(SignInPage), parameter);
+                        break;
+                }
+            }
+            catch (Exception e)
             {
-                case CodeUserAuthResult.InvalidLogin:
-                    //UserDialogs.Instance.Alert(Resource.INVALID_LOGIN);
-                    Login = "";
-                    Password = "";
-                    ConfirmPassword = "";
-                    break;
-                case CodeUserAuthResult.InvalidPassword:
-                    //UserDialogs.Instance.Alert(Resource.INVALID_PASSWORD);
-                    Password = "";
-                    ConfirmPassword = "";
-                    break;
-                case CodeUserAuthResult.PasswordMismatch:
-                    //UserDialogs.Instance.Alert(Resource.PASSWORD_MISMATCH);
-                    Password = "";
-                    ConfirmPassword = "";
-                    break;
-                case CodeUserAuthResult.LoginTaken:
-                    //UserDialogs.Instance.Alert(Resource.LOGIN_TAKEN);
-                    Login = "";
-                    Password = "";
-                    ConfirmPassword = "";
-                    break;
-                case CodeUserAuthResult.Passed:
-                    //UserDialogs.Instance.Alert(Resource.AUTHETICATION_SUCCESS);
-                    //await DbService.InsertDataAsync(new UserModel
-                    //{
-                    //    Login = Login,
-                    //    Password = Password
-                    //});
-
-                    //NavigationParameters parameter = new NavigationParameters
-                    //{
-                    //    { "login", Login }
-                    //};
-                    //await NavigationService.NavigateAsync(nameof(SignInPageViewModel), parameter);
-                    break;
+                System.Console.WriteLine(e);
             }
         }
 
-        private bool CanExecute() => _IsButtonSignUpEnabled;
+        //private bool CanExecute() => _IsButtonSignUpEnabled;
 
         #endregion
         #region --- Overrides ---

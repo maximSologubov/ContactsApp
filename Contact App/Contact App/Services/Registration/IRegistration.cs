@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contact_App.Registration
+namespace Contact_App.Services.Registration
 {
     public interface IRegistration
     {

@@ -6,15 +6,18 @@ using Prism.Navigation;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Contact_App.Resources;
+using Contact_App.Services.DbService;
+using Contact_App.Services.Authorization;
 
 namespace Contact_App.ViewModels
 {
-    public class SignInPageViewModel : BindableBase
+    public class SignInPageViewModel : ViewModelBase
     {
         INavigationService _navigationService;
 
         private ISettinngsManager _settinngsManager;
-        public SignInPageViewModel(INavigationService navigationService, ISettinngsManager settinngsManager)
+        public SignInPageViewModel(INavigationService navigationService, IDbService dbService, ISettinngsManager settinngsManager, IAuthorization authorization) : base(navigationService, dbService, settinngsManager)
         {
             _navigationService = navigationService;
             _settinngsManager = settinngsManager;
@@ -22,8 +25,8 @@ namespace Contact_App.ViewModels
            
         }
 
-        //public ICommand SingInTapCommand => new DelegateCommand(OnSignInAsync);
-        public DelegateCommand SignUpButtonTapCommand => new DelegateCommand(OnSignInAsync);
+        public DelegateCommand OnSignUpTapCommand => new DelegateCommand(GoSignUp);
+        
 
 
         #region --- Public Properties ---
@@ -48,32 +51,23 @@ namespace Contact_App.ViewModels
             set => SetProperty(ref _IsButtonSignInEnabled, value);
         }
 
-
-
-        public ICommand SignInCommand { protected set; get; }
         public INavigation Navigation { get; set; }
 
         #endregion
 
-
-
-        #region --- Private Helpers ---
-
-        private async void OnSignInAsync() => await _navigationService.NavigateAsync(nameof(SignUpPage));
-
-        #endregion
-
-
         #region --- Overrides ---
+
         protected override void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
-            if(args.PropertyName == nameof(Login) || args.PropertyName == nameof(Password))
+            if (args.PropertyName == nameof(Login) || args.PropertyName == nameof(Password))
             {
                 System.Console.WriteLine(args.PropertyName);
                 if (!string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password))
                 {
+
                     IsButtonSignInEnabled = true;
+
                 }
                 else
                 {
@@ -82,11 +76,18 @@ namespace Contact_App.ViewModels
             }
         }
 
-        public void OnNavigatedTo(INavigationParameters parameters)
+
+        public override void Initialize(INavigationParameters parameters)
         {
-            //var element = parameters["MyParam"];
-            //throw new NotImplementedException();
+            Login = (string)parameters["login"];
         }
+
+        #endregion
+
+
+        #region --- Private Helpers ---
+
+        private async void GoSignUp() => await _navigationService.NavigateAsync(nameof(SignUpPage));
 
         #endregion
     }

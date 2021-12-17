@@ -169,6 +169,15 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Users SignIn.
+        /// </summary>
+        internal static string SignInTitlePage {
+            get {
+                return ResourceManager.GetString("SignInTitlePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SIGN UP.
         /// </summary>
         internal static string SignUpButtonText {

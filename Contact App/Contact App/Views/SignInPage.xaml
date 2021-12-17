@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
-             xmlns:resources="clr-namespace:Contact_App.Resources"
-             x:Class="Contact_App.Views.SignInPage">
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="Contact_App.Views.SignInPage" 
+                xmlns:resources="clr-namespace:Contact_App.Resources"
+                Title="Sign In">
 
 
-    <Grid>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="*" />
@@ -37,7 +37,7 @@
             </Button>
             
             <Label HorizontalOptions="Center" 
-                   VerticalOptions="CenterAndExpand" IsEnabled="False">
+                   VerticalOptions="CenterAndExpand">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="{x:Static resources:Resource.SignUpButtonText}" 
@@ -45,7 +45,7 @@
                               TextDecorations="Underline"
                               FontSize="Medium">
                             <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnSignInAsync}" />
+                                <TapGestureRecognizer Command="{Binding OnSignUpTapCommand}"/>
                             </Span.GestureRecognizers>
                         </Span>
                     </FormattedString>

@@ -1,4 +1,8 @@
-﻿using Contact_App.Services.Settings;
+﻿using Contact_App.Services.Registration;
+using Contact_App.Services.Authorization;
+using Contact_App.Services.DbService;
+using Contact_App.Services.Repository;
+using Contact_App.Services.Settings;
 using Contact_App.ViewModels;
 using Contact_App.Views;
 using Prism;
@@ -18,9 +22,28 @@ namespace Contact_App
 
         }
         #region --- Private fields
-        private ISettinngsManager _settinngsManager;
 
-        #endregion       
+        private ISettinngsManager _settinngsManager;
+        private IRepository repository;
+        private IDbService dbService;
+        private IRegistration registration;
+        private IAuthorization authorizationService;
+
+        #endregion
+
+        #region --- Properties ---
+
+        public ISettinngsManager SettingsManager => _settinngsManager ??= Container.Resolve<SettingsManager>();
+
+        public IRepository Repository => repository ??= Container.Resolve<Repository>();
+
+        public IDbService DbService => dbService ??= Container.Resolve<DbService>();
+
+        public IRegistration Registration => registration ??= Container.Resolve<Registration>();
+
+        public IAuthorization AuthorizationService => authorizationService ??= Container.Resolve<Authorization>();
+
+        #endregion
 
         #region --- Overrides ---
         protected override void OnStart()
@@ -40,11 +63,16 @@ namespace Contact_App
             //Services
 
             containerRegistry.RegisterInstance<ISettinngsManager>(Container.Resolve<SettingsManager>());
+            containerRegistry.RegisterInstance<IRepository>(Container.Resolve<Repository>());
+            containerRegistry.RegisterInstance<IDbService>(Container.Resolve<DbService>());
+            containerRegistry.RegisterInstance<IRegistration>(Container.Resolve<Registration>());
+            containerRegistry.RegisterInstance<IAuthorization>(Container.Resolve<Authorization>());
+
             //Navigation
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<SignInPage, SignInPageViewModel>();
             containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageViewModel>();
-            //containerRegistry.RegisterForNavigation<MainListView, MainListViewModel>();
+            
         }
 
         protected override void OnInitialized()
