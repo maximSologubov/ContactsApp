@@ -32,7 +32,7 @@
                     BackgroundColor="#D2691E" 
                     BorderWidth="1" 
                     BorderColor="#696969"
-                    Command="{Binding SingInTapCommand}"
+                    Command="{Binding OnSignInTapCommand}"
                     IsEnabled="{Binding IsButtonSignInEnabled}">
             </Button>
             
