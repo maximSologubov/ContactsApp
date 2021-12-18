@@ -15,19 +15,8 @@
                      IconImageSource="settings.png"
                      Command="{Binding SettingsTapCommand}" />
     </ContentPage.ToolbarItems>
-    <!--<Button Grid.Row="0" 
-                ImageSource="add.png"
-                BorderColor="#273939"
-                BorderWidth="5"
-                FontAttributes="None"
-                BackgroundColor="#00afc2"
-                BorderRadius ="70"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                WidthRequest="80"
-                HeightRequest="80"
-                Margin="0,0,20,40"
-                Command="{Binding AddEditProfileTapCommand}"/>-->
+  
+    
     <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -114,19 +103,21 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
-        <Button Grid.Row="0" 
-                ImageSource="add.png"
+        </ListView>-->
+        <Button Grid.Row="0"                 
                 BorderColor="#273939"
-                BorderWidth="5"
+                BorderWidth="10"
                 FontAttributes="None"
-                BackgroundColor="#00afc2"
-                BorderRadius ="70"
+                BackgroundColor="#1891ff"
+                BorderRadius ="50"
+                Text="+"
+                TextColor="White"
+                FontSize="30"
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 WidthRequest="80"
                 HeightRequest="80"
                 Margin="0,0,20,40"
                 Command="{Binding AddEditProfileTapCommand}"/>
-    </Grid>-->
+    <!--</Grid>-->
 </ContentPage>

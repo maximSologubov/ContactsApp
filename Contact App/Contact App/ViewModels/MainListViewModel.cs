@@ -1,87 +1,48 @@
-﻿using Contact_App.Models;
-using Contact_App.Services.DbService;
+﻿using Contact_App.Services.DbService;
 using Contact_App.Services.Settings;
+using Contact_App.Views;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using Xamarin.Forms;
 
 namespace Contact_App.ViewModels
 {
-    public class MainListViewModel : ViewModelBase, IInitializeAsync//, INavigatedAware
+    public class MainListViewModel : ViewModelBase
     {
         public MainListViewModel(INavigationService navigationService, IDbService dbService, ISettinngsManager settinngsManager) : base(navigationService, dbService, settinngsManager)
         {
-            //ProfileList = new ObservableCollection<ProfileModel>()
-            //{
-            //   new ProfileModel()
-            //   {
-            //       NickName = "Ivan",
-            //       Name = "Ivan",
-            //       ImagePath = "",
-            //       Owner = "",
-            //       Description = ""
-            //   },
-            //   new ProfileModel()
-            //   {
-            //       NickName = "Petro",
-            //       Name = "Petro",
-            //       ImagePath = "",
-            //       Owner = "",
-            //       Description = ""
-            //   }
-            //};
+           
         }
 
-        #region --- Private fields ---
 
-        private ObservableCollection<ProfileModel> profileList;
 
-        private bool isVisible = false;
+        #region Commands
 
-        
-        #endregion
-
-        #region --- Implement interfaces ---
-        public Task InitializeAsync(INavigationParameters parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnNavigatedTo(INavigationParameters parameters)
-        {
-
-            //if (SettingsManager.ChangeSort && parameters.GetNavigationMode() == NavigationMode.Back)
-            //{
-            //    List<ProfileModel> profiles = ProfileList.ToList();
-            //    profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
-            //    ProfileList = new ObservableCollection<ProfileModel>(profiles);
-            //    SettingsManager.ChangeSort = false;
-            //}
-        }
+        public DelegateCommand LogOutTapCommand => new DelegateCommand(GoLogOutAsync);
+        //public DelegateCommand AddEditProfileTapCommand => new DelegateCommand(GoAddEditProfileAsync);
+        //public DelegateCommand SettingsTapCommand => new DelegateCommand(GoSettingsPageAsync);
 
         #endregion
 
-        #region --- Public Properties ---  
-        public ObservableCollection<ProfileModel> ProfileList
+        #region Private helpers
+
+        private async void GoLogOutAsync()
         {
-            get => profileList;
-            set => SetProperty(ref profileList, value);
-        }
-        public bool IsVisible
-        {
-            get => isVisible;
-            set => SetProperty(ref isVisible, value);
+            SettingsManager.LoggedUser = "";
+            await NavigationService.NavigateAsync(nameof(SignInPage));
+
+            NavigationPage page = (NavigationPage)App.Current.MainPage;
+            while (page.Navigation.NavigationStack.Count > 1)
+                page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);
         }
 
         #endregion
-
-
 
     }
 }
