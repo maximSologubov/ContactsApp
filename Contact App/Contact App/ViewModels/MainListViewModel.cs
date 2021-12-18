@@ -25,8 +25,8 @@ namespace Contact_App.ViewModels
         #region Commands
 
         public DelegateCommand LogOutTapCommand => new DelegateCommand(GoLogOutAsync);
-        //public DelegateCommand AddEditProfileTapCommand => new DelegateCommand(GoAddEditProfileAsync);
-        //public DelegateCommand SettingsTapCommand => new DelegateCommand(GoSettingsPageAsync);
+        public DelegateCommand AddEditProfileTapCommand => new DelegateCommand(GoAddEditProfileAsync);
+        public DelegateCommand SettingsTapCommand => new DelegateCommand(GoSettingsPageAsync);
 
         #endregion
 
@@ -41,6 +41,10 @@ namespace Contact_App.ViewModels
             while (page.Navigation.NavigationStack.Count > 1)
                 page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);
         }
+
+        private async void GoAddEditProfileAsync() => await NavigationService.NavigateAsync(nameof(AddEditProfilePage));
+
+        private async void GoSettingsPageAsync() => await NavigationService.NavigateAsync(nameof(SettingPage));
 
         #endregion
 

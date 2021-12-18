@@ -73,6 +73,8 @@ namespace Contact_App
             containerRegistry.RegisterForNavigation<SignInPage, SignInPageViewModel>();
             containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageViewModel>();
             containerRegistry.RegisterForNavigation<MainListView, MainListViewModel>();
+            containerRegistry.RegisterForNavigation<SettingPage, SettingPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddEditProfilePage, AddEditProfileViewModel>();
 
         }
 
