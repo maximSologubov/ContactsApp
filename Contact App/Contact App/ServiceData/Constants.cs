@@ -13,5 +13,7 @@ namespace Contact_App.ServiceData
         public const int MAX_LENGTH = 16;
 
         #endregion
+
+        public const string PATH_TO_DEFAULT_IMAGE_PROFILE = "profile.png";
     }
 }

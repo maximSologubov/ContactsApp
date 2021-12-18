@@ -31,8 +31,7 @@ namespace Contact_App.Services.DbService
 
         public Task<int> UpdateDataAsync<T>(T entity) where T : IEntityBase, new() => repository.UpdateAsync(entity);
 
-
-       
+        public Task<List<ProfileModel>> GetOwnersProfilesAsync(string owner) => repository.GetProfilesAsync(owner);
 
         #endregion
     }

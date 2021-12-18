@@ -61,11 +61,38 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Profile.
+        /// </summary>
+        internal static string AddProfileTitlePage {
+            get {
+                return ResourceManager.GetString("AddProfileTitlePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NickName and Name fields must be filled.
+        /// </summary>
+        internal static string ALERT_ADD_EDIT_PROFILE {
+            get {
+                return ResourceManager.GetString("ALERT_ADD_EDIT_PROFILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success!! Account created.
         /// </summary>
         internal static string AUTHETICATION_SUCCESS {
             get {
                 return ResourceManager.GetString("AUTHETICATION_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #000000.
+        /// </summary>
+        internal static string BlackTextColor {
+            get {
+                return ResourceManager.GetString("BlackTextColor", resourceCulture);
             }
         }
         
@@ -102,6 +129,24 @@ namespace Contact_App.Resources {
         internal static string ConfirmPasswordText {
             get {
                 return ResourceManager.GetString("ConfirmPasswordText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string DescriptionText {
+            get {
+                return ResourceManager.GetString("DescriptionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Profile.
+        /// </summary>
+        internal static string EditProfileTitlePage {
+            get {
+                return ResourceManager.GetString("EditProfileTitlePage", resourceCulture);
             }
         }
         
@@ -147,6 +192,24 @@ namespace Contact_App.Resources {
         internal static string LoginText {
             get {
                 return ResourceManager.GetString("LoginText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string NameText {
+            get {
+                return ResourceManager.GetString("NameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NickName.
+        /// </summary>
+        internal static string NicknameText {
+            get {
+                return ResourceManager.GetString("NicknameText", resourceCulture);
             }
         }
         

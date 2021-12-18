@@ -1,12 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:resources="clr-namespace:Contact_App.Resources"
              x:Class="Contact_App.Views.AddEditProfilePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"                    
+                     IconImageSource="save.png"
+                     Command="{Binding SaveTapCommand}"/>
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0"
+               Source="{Binding PathToImageSourceProfile}"
+               Aspect="AspectFit"
+               Margin="0,5,0,0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ImageTapCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <StackLayout Grid.Row="1" 
+                     Margin="30"
+                     VerticalOptions="Center"
+                     Spacing="15">
+            <Entry x:Name="nickName"
+                   ClearButtonVisibility="WhileEditing"
+                   Placeholder="{x:Static resources:Resource.NicknameText}"
+                   PlaceholderColor="#666666"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Fill"
+                   FontSize="Medium"
+                   Text="{Binding NickName}"
+                   TextColor="#000000"/>
+            <Entry x:Name="name"
+                   ClearButtonVisibility="WhileEditing"
+                   Placeholder="{x:Static resources:Resource.NameText}"
+                   PlaceholderColor="#666666"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Fill"
+                   FontSize="Medium"
+                   Text="{Binding Name}"
+                   TextColor="#000000"/>
         </StackLayout>
-    </ContentPage.Content>
+        <Editor Grid.Row="2" 
+                x:Name="editor"
+                Margin="20,0,20,20"
+                BackgroundColor="#d4d4d4"
+                Placeholder="{x:Static resources:Resource.DescriptionText}"
+                PlaceholderColor="#666666"
+                MaxLength="120"
+                Text="{Binding Description}"
+                TextColor="#000000"
+                FontSize="Medium"/>
+    </Grid>
 </ContentPage>

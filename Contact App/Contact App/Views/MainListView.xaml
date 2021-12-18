@@ -17,7 +17,7 @@
     </ContentPage.ToolbarItems>
   
     
-    <!--<Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -47,12 +47,12 @@
                   SeparatorVisibility="None"
                   IsVisible="True">
 
-            <ListView.Behaviors>
+            <!--<ListView.Behaviors>
                 <bh:EventToCommandBehavior 
                     EventName="ItemTapped"
                     Command="{Binding Path=BindingContext.ItemTapCommand, Source={x:Reference listView}}"
                     Converter="{StaticResource ItemTappedConverter}"/>
-            </ListView.Behaviors>
+            </ListView.Behaviors>-->
 
             <ListView.Triggers>
                 <DataTrigger TargetType="ListView"
@@ -66,14 +66,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ViewCell.ContextActions>
+                        <!--<ViewCell.ContextActions>
                             <MenuItem Text="{x:Static resources:Resource.EditContextAction}"
                                       Command="{Binding Path=BindingContext.UpdateTapCommand, Source={x:Reference listView}}"
                                       CommandParameter="{Binding .}"/>
                             <MenuItem Text="{x:Static resources:Resource.DeleteContextAction}"
                                       Command="{Binding Path=BindingContext.DeleteTapCommand, Source={x:Reference listView}}"
                                       CommandParameter="{Binding .}"/>
-                        </ViewCell.ContextActions>
+                        </ViewCell.ContextActions>-->
 
                         <ViewCell.View>
 
@@ -103,7 +103,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->
+        </ListView>
         <Button Grid.Row="0"                 
                 BorderColor="#273939"
                 BorderWidth="10"
@@ -119,5 +119,5 @@
                 HeightRequest="80"
                 Margin="0,0,20,40"
                 Command="{Binding AddEditProfileTapCommand}"/>
-    <!--</Grid>-->
+    </Grid>
 </ContentPage>

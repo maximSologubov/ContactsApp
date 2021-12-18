@@ -19,6 +19,7 @@ namespace Contact_App.Services.Repository
                 SQLiteAsyncConnection _database = new SQLiteAsyncConnection(path);
 
                 _database.CreateTableAsync<UserModel>().Wait();
+                _database.CreateTableAsync<ProfileModel>().Wait();
                 return _database;
             });
         }
@@ -43,6 +44,9 @@ namespace Contact_App.Services.Repository
 
 
         public Task<int> UpdateAsync<T>(T entity) where T : IEntityBase, new() => database.Value.UpdateAsync(entity);
+        public Task<List<ProfileModel>> GetProfilesAsync(string owner) => database.Value.Table<ProfileModel>()
+                                                                                       .Where(p => p.Owner == owner)
+                                                                                       .ToListAsync();
 
         #endregion
     }

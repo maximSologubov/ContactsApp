@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddProfileTitlePage" xml:space="preserve">
+    <value>Add Profile</value>
+  </data>
+  <data name="ALERT_ADD_EDIT_PROFILE" xml:space="preserve">
+    <value>NickName and Name fields must be filled</value>
+  </data>
   <data name="AUTHETICATION_SUCCESS" xml:space="preserve">
     <value>Success!! Account created</value>
+  </data>
+  <data name="BlackTextColor" xml:space="preserve">
+    <value>#000000</value>
   </data>
   <data name="ButtonBorderColor" xml:space="preserve">
     <value>"#696969"</value>
@@ -131,6 +140,12 @@
   </data>
   <data name="ConfirmPasswordText" xml:space="preserve">
     <value>Confirm password</value>
+  </data>
+  <data name="DescriptionText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EditProfileTitlePage" xml:space="preserve">
+    <value>Edit Profile</value>
   </data>
   <data name="INVALID_LOGIN" xml:space="preserve">
     <value>Invalid login. Login must be from 4 to 16 characters and must not start with a number</value>
@@ -146,6 +161,12 @@
   </data>
   <data name="LOGIN_TAKEN" xml:space="preserve">
     <value>This login is already taken. Come up with another</value>
+  </data>
+  <data name="NameText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NicknameText" xml:space="preserve">
+    <value>NickName</value>
   </data>
   <data name="NoProfilesLabel" xml:space="preserve">
     <value>No profiles added</value>

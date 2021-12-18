@@ -12,5 +12,6 @@ namespace Contact_App.Services.DbService
         Task<int> UpdateDataAsync<T>(T entity) where T : IEntityBase, new();
         Task<int> DeleteDataAsync<T>(T entity) where T : IEntityBase, new();
         Task<List<T>> GetAllDataAsync<T>() where T : IEntityBase, new();
+        Task<List<ProfileModel>> GetOwnersProfilesAsync(string owner);
     }
 }
