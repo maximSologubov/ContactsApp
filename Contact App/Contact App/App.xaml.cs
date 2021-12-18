@@ -79,10 +79,13 @@ namespace Contact_App
         protected override void OnInitialized()
         {
             InitializeComponent();
+            if (string.IsNullOrEmpty(SettingsManager.LoggedUser))
+                NavigationService.NavigateAsync("NavigationPage/SignInPage");
+            else
+                NavigationService.NavigateAsync("NavigationPage/MainListView");
 
-            NavigationService.NavigateAsync($"{nameof(SignInPage)}");
-          
-            
+
+
 
         }
         #endregion

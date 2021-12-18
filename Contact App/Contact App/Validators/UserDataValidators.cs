@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Contact_App.Validators
 {
@@ -17,30 +18,17 @@ namespace Contact_App.Validators
 
         private static bool IsLoginValid(string login)
         {
-            bool lengthRequirements = login.Length >= Constants.MIN_LENGTH_LOGIN && login.Length <= Constants.MAX_LENGTH;
-            bool firstCharacterIsNotDigit = char.IsDigit(login[0]);
-            return lengthRequirements && !firstCharacterIsNotDigit;
+            var regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9-_\.]{3,15}$");
+            
+            return regex.IsMatch(login);
         }
 
 
         private static bool IsPasswordValid(string password)
         {
-            bool lengthRequirements = password.Length >= Constants.MIN_LENGTH_PASSWORD && password.Length <= Constants.MAX_LENGTH;
-            bool hasUpperCaseLetter = false;
-            bool hasLowerCaseLetter = false;
-            bool hasDigit = false;
+            var regex = new Regex(@"(?=.*\d{1})(?=.*?[A-Z]{1})(?=.*?[a-z]{1}).{7,15}");
 
-            if (lengthRequirements)
-            {
-                foreach (char c in password)
-                {
-                    if (char.IsUpper(c)) hasUpperCaseLetter = true;
-                    else if (char.IsLower(c)) hasLowerCaseLetter = true;
-                    else if (char.IsDigit(c)) hasDigit = true;
-                }
-            }
-
-            return lengthRequirements && hasUpperCaseLetter && hasLowerCaseLetter && hasDigit;
+            return regex.IsMatch(password);
         }
     }
 }

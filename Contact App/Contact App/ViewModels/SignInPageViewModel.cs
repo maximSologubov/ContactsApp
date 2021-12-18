@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Contact_App.Resources;
 using Contact_App.Services.DbService;
 using Contact_App.Services.Authorization;
+using System.Threading.Tasks;
 
 namespace Contact_App.ViewModels
 {
@@ -16,28 +17,27 @@ namespace Contact_App.ViewModels
     {
         INavigationService _navigationService;
 
-        private ISettinngsManager _settinngsManager;
+        ISettinngsManager _settinngsManager;
         public SignInPageViewModel(INavigationService navigationService, IDbService dbService, ISettinngsManager settinngsManager, IAuthorization authorization) : base(navigationService, dbService, settinngsManager)
         {
             _navigationService = navigationService;
             _settinngsManager = settinngsManager;
             _authorization = authorization;
-
         }
-
         public DelegateCommand OnSignUpTapCommand => new DelegateCommand(GoSignUp);
         public DelegateCommand OnSignInTapCommand => new DelegateCommand(AuthorizationUser, CanExecute);
 
         #region --- Private fields ---
 
-        string _login;
-        string _password;
-        bool _IsButtonSignInEnabled;
+        private string _login;
+        private string _password;
+        private bool _IsButtonSignInEnabled;
         IAuthorization _authorization;
 
         #endregion
 
-        #region --- Public Properties ---       
+        #region --- Public Properties ---  
+        
         public string Login
         {
             get => _login;
@@ -101,15 +101,16 @@ namespace Contact_App.ViewModels
                 await NavigationService.NavigateAsync(nameof(MainListView));
 
                 // clear navigation stack
-                //NavigationPage page = (NavigationPage)App.Current.MainPage;
-                //while (page.Navigation.NavigationStack.Count > 1)
-                //    page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);
+                NavigationPage page = (NavigationPage)App.Current.MainPage;
+                while (page.Navigation.NavigationStack.Count > 1)
+                    page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);
 
-                //Login = "";
-                //Password = "";
+                Login = "";
+                Password = "";
+
             }
             else
-            {               
+            {
                 App.Current.MainPage.DisplayAlert("", Resource.INVALID_LOGIN_OR_PASSWORD, "ОK");
                 Password = "";
             }

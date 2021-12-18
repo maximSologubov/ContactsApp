@@ -147,6 +147,9 @@
   <data name="LOGIN_TAKEN" xml:space="preserve">
     <value>This login is already taken. Come up with another</value>
   </data>
+  <data name="NoProfilesLabel" xml:space="preserve">
+    <value>No profiles added</value>
+  </data>
   <data name="PasswordText" xml:space="preserve">
     <value>Password</value>
   </data>

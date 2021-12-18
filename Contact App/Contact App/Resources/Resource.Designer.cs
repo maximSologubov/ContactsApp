@@ -151,6 +151,15 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No profiles added.
+        /// </summary>
+        internal static string NoProfilesLabel {
+            get {
+                return ResourceManager.GetString("NoProfilesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Passwords mismatch. Re-enter passwords.
         /// </summary>
         internal static string PASSWORD_MISMATCH {

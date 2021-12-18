@@ -5,5 +5,11 @@
              x:Class="Contact_App.App">
     <Application.Resources>
 
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor"
+                    Value="#2196F3" />
+            <Setter Property="BarTextColor"
+                    Value="White" />
+        </Style>
     </Application.Resources>
 </prism:PrismApplication>
