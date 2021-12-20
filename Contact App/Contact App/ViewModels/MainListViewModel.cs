@@ -48,7 +48,7 @@ namespace Contact_App.ViewModels
                 List<ProfileModel> profiles = ProfileList.ToList();
                 //profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
                 ProfileList = new ObservableCollection<ProfileModel>(profiles);
-                //SettingsManager.ChangeSort = false;
+                SettingsManager.ChangeSort = false;
             //}
         }
 
