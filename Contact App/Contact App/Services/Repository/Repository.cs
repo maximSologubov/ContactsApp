@@ -33,21 +33,17 @@ namespace Contact_App.Services.Repository
 
         #region Public methods
 
-
         public Task<int> DeleteAsync<T>(T entity) where T : IEntityBase, new() => database.Value.DeleteAsync(entity);
-
 
         public Task<List<T>> GetAllAsync<T>() where T : IEntityBase, new() => database.Value.Table<T>().ToListAsync();
 
-
         public Task<int> InsertAsync<T>(T entity) where T : IEntityBase, new() => database.Value.InsertAsync(entity);
 
-
         public Task<int> UpdateAsync<T>(T entity) where T : IEntityBase, new() => database.Value.UpdateAsync(entity);
+
         public Task<List<ProfileModel>> GetProfilesAsync(string owner) => database.Value.Table<ProfileModel>()
                                                                                        .Where(p => p.Owner == owner)
                                                                                        .ToListAsync();
-
         #endregion
     }
 }

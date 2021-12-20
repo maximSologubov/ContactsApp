@@ -16,7 +16,7 @@ using Xamarin.Forms;
 
 namespace Contact_App.ViewModels
 {
-    public class MainListViewModel : ViewModelBase, IInitializeAsync//, INavigatedAware
+    public class MainListViewModel : ViewModelBase, IInitializeAsync
     {
         public MainListViewModel(INavigationService navigationService, IDbService dbService, ISettinngsManager settinngsManager) : base(navigationService, dbService, settinngsManager)
         {
@@ -35,24 +35,16 @@ namespace Contact_App.ViewModels
         public async Task InitializeAsync(INavigationParameters parameters)
         {
             List<ProfileModel> profiles = await DbService.GetOwnersProfilesAsync(SettingsManager.LoggedUser);
-           // profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
             ProfileList = new ObservableCollection<ProfileModel>(profiles);
 
             IsVisible = ProfileList.Count > 0;
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
-        {
-            //if (SettingsManager.ChangeSort && parameters.GetNavigationMode() == NavigationMode.Back)
-            //{
-                List<ProfileModel> profiles = ProfileList.ToList();
-                //profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
-                ProfileList = new ObservableCollection<ProfileModel>(profiles);
-                SettingsManager.ChangeSort = false;
-            //}
+        {           
+            List<ProfileModel> profiles = ProfileList.ToList();
+            ProfileList = new ObservableCollection<ProfileModel>(profiles);
         }
-
-        ////public void OnNavigatedFrom(INavigationParameters parameters) { }
 
         #endregion
 

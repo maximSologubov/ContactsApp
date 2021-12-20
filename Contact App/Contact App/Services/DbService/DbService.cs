@@ -11,7 +11,6 @@ namespace Contact_App.Services.DbService
     {
         public DbService(IRepository _repository) => repository = _repository;
 
-
         #region Private fields
 
         private IRepository repository;

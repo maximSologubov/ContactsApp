@@ -35,7 +35,6 @@ namespace Contact_App.ViewModels
 
         #region Commands
 
-        //public DelegateCommand ImageTapCommand => new DelegateCommand(OpenActionSheet);
         public DelegateCommand SaveTapCommand => new DelegateCommand(SaveProfile);
 
         #endregion
@@ -66,7 +65,6 @@ namespace Contact_App.ViewModels
             set => SetProperty(ref description, value);
         }
 
-
         #endregion
 
         #region Override
@@ -88,52 +86,6 @@ namespace Contact_App.ViewModels
         #endregion
 
         #region --- Private helpers ---
-
-        //private void OpenActionSheet()
-        //{
-        //    UserDialogs.Instance.ActionSheet(new ActionSheetConfig()
-        //                                     .SetTitle(Resource.IMAGE_PROFILE_ACTION)
-        //                                     .Add(Resource.GET_IMAGE_ACTION, GetPhotoAsync, "ic_collections_black.png")
-        //                                     .Add(Resource.TAKE_IMAGE_ACTION, TakePhotoAsync, "ic_camera_alt_black.png"));
-        //}
-
-        //private async void GetPhotoAsync()
-        //{
-        //    try
-        //    {
-        //        FileResult photo = await MediaPicker.PickPhotoAsync();
-        //        PathToImageSourceProfile = photo.FullPath;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UserDialogs.Instance.Alert(ex.Message, "Error");
-        //        pathToImageSourceProfile = Constants.PATH_TO_DEFAULT_IMAGE_PROFILE;
-        //    }
-
-        //}
-
-        //private async void TakePhotoAsync()
-        //{
-        //    try
-        //    {
-        //        FileResult photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
-        //        {
-        //            Title = $"{SettingsManager.LoggedUser}-{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
-        //        });
-
-        //        string file = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
-        //        using (Stream stream = await photo.OpenReadAsync())
-        //        using (FileStream newStream = File.OpenWrite(file))
-        //            await stream.CopyToAsync(newStream);
-
-        //        PathToImageSourceProfile = file;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UserDialogs.Instance.Alert(ex.Message, "Error");
-        //        pathToImageSourceProfile = Constants.PATH_TO_DEFAULT_IMAGE_PROFILE;
-        //    }
-        //}
 
         private async void SaveProfile()
         {

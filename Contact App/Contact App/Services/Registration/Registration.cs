@@ -15,7 +15,6 @@ namespace Contact_App.Services.Registration
 
         public Registration(IDbService _dbService) => dbService = _dbService;
 
-
         public async Task<CodeUserAuthResult> IsRegistration(string login, string password, string confirmPassword)
         {
             bool result = await Task.Run(() => UserDataValidators.IsDataValid(login.ToUpper(), CheckedItem.Login));

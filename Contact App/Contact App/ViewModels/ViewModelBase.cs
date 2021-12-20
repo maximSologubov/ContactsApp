@@ -9,7 +9,6 @@ namespace Contact_App.ViewModels
     public class ViewModelBase : BindableBase, IInitialize
     {
         protected INavigationService NavigationService { get; }
-        //protected IDbService DbService { get; }
         protected IDbService DbService { get; }
         protected ISettinngsManager SettingsManager { get; }
 

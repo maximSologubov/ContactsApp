@@ -47,13 +47,6 @@
                   SeparatorVisibility="None"
                   IsVisible="True">
 
-            <!--<ListView.Behaviors>
-                <bh:EventToCommandBehavior 
-                    EventName="ItemTapped"
-                    Command="{Binding Path=BindingContext.ItemTapCommand, Source={x:Reference listView}}"
-                    Converter="{StaticResource ItemTappedConverter}"/>
-            </ListView.Behaviors>-->
-
             <ListView.Triggers>
                 <DataTrigger TargetType="ListView"
                              Binding="{Binding Source={x:Reference label}, Path=IsVisible}"
@@ -66,15 +59,6 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <!--<ViewCell.ContextActions>
-                            <MenuItem Text="{x:Static resources:Resource.EditContextAction}"
-                                      Command="{Binding Path=BindingContext.UpdateTapCommand, Source={x:Reference listView}}"
-                                      CommandParameter="{Binding .}"/>
-                            <MenuItem Text="{x:Static resources:Resource.DeleteContextAction}"
-                                      Command="{Binding Path=BindingContext.DeleteTapCommand, Source={x:Reference listView}}"
-                                      CommandParameter="{Binding .}"/>
-                        </ViewCell.ContextActions>-->
-
                         <ViewCell.View>
 
                             <Grid ColumnDefinitions="0.4*, *"
