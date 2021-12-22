@@ -72,18 +72,18 @@ namespace Contact_App.Resources {
         /// <summary>
         ///   Looks up a localized string similar to NickName and Name fields must be filled.
         /// </summary>
-        internal static string ALERT_ADD_EDIT_PROFILE {
+        internal static string AlertAddEditProfile {
             get {
-                return ResourceManager.GetString("ALERT_ADD_EDIT_PROFILE", resourceCulture);
+                return ResourceManager.GetString("AlertAddEditProfile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Success!! Account created.
         /// </summary>
-        internal static string AUTHETICATION_SUCCESS {
+        internal static string AuthenticationSuccess {
             get {
-                return ResourceManager.GetString("AUTHETICATION_SUCCESS", resourceCulture);
+                return ResourceManager.GetString("AuthenticationSuccess", resourceCulture);
             }
         }
         
@@ -124,11 +124,47 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string ConfirmCancel {
+            get {
+                return ResourceManager.GetString("ConfirmCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string ConfirmOK {
+            get {
+                return ResourceManager.GetString("ConfirmOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm password.
         /// </summary>
         internal static string ConfirmPasswordText {
             get {
                 return ResourceManager.GetString("ConfirmPasswordText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string DeleteContextAction {
+            get {
+                return ResourceManager.GetString("DeleteContextAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you really want to delete this profile?.
+        /// </summary>
+        internal static string DeleteProfileQuestion {
+            get {
+                return ResourceManager.GetString("DeleteProfileQuestion", resourceCulture);
             }
         }
         
@@ -142,6 +178,15 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string EditContextAction {
+            get {
+                return ResourceManager.GetString("EditContextAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Profile.
         /// </summary>
         internal static string EditProfileTitlePage {
@@ -151,38 +196,56 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose action.
+        /// </summary>
+        internal static string ImageProfileAction {
+            get {
+                return ResourceManager.GetString("ImageProfileAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid login. Login must be from 4 to 16 characters and must not start with a number.
         /// </summary>
-        internal static string INVALID_LOGIN {
+        internal static string InvalidLogin {
             get {
-                return ResourceManager.GetString("INVALID_LOGIN", resourceCulture);
+                return ResourceManager.GetString("InvalidLogin", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid login or password!.
         /// </summary>
-        internal static string INVALID_LOGIN_OR_PASSWORD {
+        internal static string InvalidLoginOrPassword {
             get {
-                return ResourceManager.GetString("INVALID_LOGIN_OR_PASSWORD", resourceCulture);
+                return ResourceManager.GetString("InvalidLoginOrPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid login or password!.
         /// </summary>
-        internal static string INVALID_PASSWORD {
+        internal static string InvalidPassword {
             get {
-                return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
+                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort list by.
+        /// </summary>
+        internal static string LabelSortListBy {
+            get {
+                return ResourceManager.GetString("LabelSortListBy", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to This login is already taken. Come up with another.
         /// </summary>
-        internal static string LOGIN_TAKEN {
+        internal static string LoginTaken {
             get {
-                return ResourceManager.GetString("LOGIN_TAKEN", resourceCulture);
+                return ResourceManager.GetString("LoginTaken", resourceCulture);
             }
         }
         
@@ -223,11 +286,11 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Passwords mismatch. Re-enter passwords.
+        ///   Looks up a localized string similar to Passwords missmatch. Re-enter passwords.
         /// </summary>
-        internal static string PASSWORD_MISMATCH {
+        internal static string PasswordMissMatch {
             get {
-                return ResourceManager.GetString("PASSWORD_MISMATCH", resourceCulture);
+                return ResourceManager.GetString("PasswordMissMatch", resourceCulture);
             }
         }
         
@@ -237,6 +300,42 @@ namespace Contact_App.Resources {
         internal static string PasswordText {
             get {
                 return ResourceManager.GetString("PasswordText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick at Gallery.
+        /// </summary>
+        internal static string PickAtGallery {
+            get {
+                return ResourceManager.GetString("PickAtGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date creation.
+        /// </summary>
+        internal static string RadioCreation {
+            get {
+                return ResourceManager.GetString("RadioCreation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string RadioName {
+            get {
+                return ResourceManager.GetString("RadioName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NickName.
+        /// </summary>
+        internal static string RadioNickName {
+            get {
+                return ResourceManager.GetString("RadioNickName", resourceCulture);
             }
         }
         
@@ -273,6 +372,15 @@ namespace Contact_App.Resources {
         internal static string SignUpTitlePage {
             get {
                 return ResourceManager.GetString("SignUpTitlePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take photo with camera.
+        /// </summary>
+        internal static string TakePhotoWithCamera {
+            get {
+                return ResourceManager.GetString("TakePhotoWithCamera", resourceCulture);
             }
         }
     }

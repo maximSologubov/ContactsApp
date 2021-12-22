@@ -10,6 +10,7 @@ using Contact_App.Resources;
 using Contact_App.Services.DbService;
 using Contact_App.Services.Authorization;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 
 namespace Contact_App.ViewModels
 {
@@ -110,8 +111,8 @@ namespace Contact_App.ViewModels
 
             }
             else
-            {
-                App.Current.MainPage.DisplayAlert("", Resource.INVALID_LOGIN_OR_PASSWORD, "ОK");
+            {                
+                UserDialogs.Instance.Alert(Resource.InvalidLoginOrPassword);
                 Password = "";
             }
         }

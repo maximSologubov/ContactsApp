@@ -11,6 +11,7 @@ using Contact_App.ViewModels;
 using Prism.Mvvm;
 using System.ComponentModel;
 using System;
+using Acr.UserDialogs;
 
 namespace Contact_App.ViewModels
 {
@@ -75,30 +76,30 @@ namespace Contact_App.ViewModels
 
                 switch (result)
                 {
-                    case CodeUserAuthResult.InvalidLogin:
-                        App.Current.MainPage.DisplayAlert("", Resource.INVALID_LOGIN, "ОK");
+                    case CodeUserAuthResult.InvalidLogin:                       
+                        UserDialogs.Instance.Alert(Resource.InvalidLogin);
                         Login = "";
                         Password = "";
                         ConfirmPassword = "";
                         break;
                     case CodeUserAuthResult.InvalidPassword:
-                        App.Current.MainPage.DisplayAlert("", Resource.INVALID_PASSWORD, "ОK");
+                        UserDialogs.Instance.Alert(Resource.InvalidPassword);
                         Password = "";
                         ConfirmPassword = "";
                         break;
                     case CodeUserAuthResult.PasswordMismatch:
-                        App.Current.MainPage.DisplayAlert("", Resource.PASSWORD_MISMATCH, "ОK");
+                        UserDialogs.Instance.Alert(Resource.PasswordMissMatch);
                         Password = "";
                         ConfirmPassword = "";
                         break;
                     case CodeUserAuthResult.LoginTaken:
-                        App.Current.MainPage.DisplayAlert("", Resource.LOGIN_TAKEN, "ОK");
+                        UserDialogs.Instance.Alert(Resource.LoginTaken);
                         Login = "";
                         Password = "";
                         ConfirmPassword = "";
                         break;
                     case CodeUserAuthResult.Passed:
-                        App.Current.MainPage.DisplayAlert("", Resource.AUTHETICATION_SUCCESS, "ОK");
+                        UserDialogs.Instance.Alert(Resource.AuthenticationSuccess);
                         await DbService.InsertDataAsync(new UserModel
                         {
                             Login = Login,

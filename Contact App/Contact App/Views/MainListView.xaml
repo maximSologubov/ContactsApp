@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:resources="clr-namespace:Contact_App.Resources"
+             
              Title="Main List"
              x:Class="Contact_App.Views.MainListView">
+
+
+   
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary"                     
                      Priority="0"
@@ -47,12 +52,7 @@
                   SeparatorVisibility="None"
                   IsVisible="True">
 
-            <!--<ListView.Behaviors>
-                <bh:EventToCommandBehavior 
-                    EventName="ItemTapped"
-                    Command="{Binding Path=BindingContext.ItemTapCommand, Source={x:Reference listView}}"
-                    Converter="{StaticResource ItemTappedConverter}"/>
-            </ListView.Behaviors>-->
+           
 
             <ListView.Triggers>
                 <DataTrigger TargetType="ListView"
@@ -66,14 +66,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <!--<ViewCell.ContextActions>
+                        <ViewCell.ContextActions>
                             <MenuItem Text="{x:Static resources:Resource.EditContextAction}"
                                       Command="{Binding Path=BindingContext.UpdateTapCommand, Source={x:Reference listView}}"
                                       CommandParameter="{Binding .}"/>
                             <MenuItem Text="{x:Static resources:Resource.DeleteContextAction}"
                                       Command="{Binding Path=BindingContext.DeleteTapCommand, Source={x:Reference listView}}"
                                       CommandParameter="{Binding .}"/>
-                        </ViewCell.ContextActions>-->
+                        </ViewCell.ContextActions>
 
                         <ViewCell.View>
 

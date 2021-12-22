@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Acr.UserDialogs;
 //using Acr.UserDialogs;
 
 namespace Contact_App.Droid
@@ -20,7 +21,7 @@ namespace Contact_App.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));
-            //UserDialogs.Init(this);
+            UserDialogs.Init(this);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

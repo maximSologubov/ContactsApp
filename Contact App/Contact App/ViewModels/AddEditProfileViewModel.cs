@@ -1,4 +1,5 @@
-﻿using Contact_App.Models;
+﻿using Acr.UserDialogs;
+using Contact_App.Models;
 using Contact_App.Resources;
 using Contact_App.ServiceData;
 using Contact_App.Services.DbService;
@@ -8,9 +9,10 @@ using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Contact_App.ViewModels
@@ -24,7 +26,7 @@ namespace Contact_App.ViewModels
 
         #region --- Private fields ---
 
-        private string pathToImageSourceProfile = Constants.PATH_TO_DEFAULT_IMAGE_PROFILE;
+        private string pathToImageSourceProfile = Constants.PatchToDefaulImageProfile;
         private string nickName;
         private string name;
         private string description;
@@ -35,7 +37,7 @@ namespace Contact_App.ViewModels
 
         #region Commands
 
-        //public DelegateCommand ImageTapCommand => new DelegateCommand(OpenActionSheet);
+        public DelegateCommand ImageTapCommand => new DelegateCommand(OpenActionSheet);
         public DelegateCommand SaveTapCommand => new DelegateCommand(SaveProfile);
 
         #endregion
@@ -89,57 +91,57 @@ namespace Contact_App.ViewModels
 
         #region --- Private helpers ---
 
-        //private void OpenActionSheet()
-        //{
-        //    UserDialogs.Instance.ActionSheet(new ActionSheetConfig()
-        //                                     .SetTitle(Resource.IMAGE_PROFILE_ACTION)
-        //                                     .Add(Resource.GET_IMAGE_ACTION, GetPhotoAsync, "ic_collections_black.png")
-        //                                     .Add(Resource.TAKE_IMAGE_ACTION, TakePhotoAsync, "ic_camera_alt_black.png"));
-        //}
+        private void OpenActionSheet()
+        {
+            UserDialogs.Instance.ActionSheet(new ActionSheetConfig()
+                                             .SetTitle(Resource.ImageProfileAction)
+                                             .Add(Resource.PickAtGallery, GetPhotoAtGalleryAsync, "gallery.png")
+                                             .Add(Resource.TakePhotoWithCamera, TakePhotoWithCameraAsync, "camera.png"));
+        }
 
-        //private async void GetPhotoAsync()
-        //{
-        //    try
-        //    {
-        //        FileResult photo = await MediaPicker.PickPhotoAsync();
-        //        PathToImageSourceProfile = photo.FullPath;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UserDialogs.Instance.Alert(ex.Message, "Error");
-        //        pathToImageSourceProfile = Constants.PATH_TO_DEFAULT_IMAGE_PROFILE;
-        //    }
+        private async void GetPhotoAtGalleryAsync()
+        {
+            try
+            {
+                FileResult photo = await MediaPicker.PickPhotoAsync();
+                PathToImageSourceProfile = photo.FullPath;
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.Alert(ex.Message, "Error");
+                pathToImageSourceProfile = Constants.PatchToDefaulImageProfile;
+            }
 
-        //}
+        }
 
-        //private async void TakePhotoAsync()
-        //{
-        //    try
-        //    {
-        //        FileResult photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
-        //        {
-        //            Title = $"{SettingsManager.LoggedUser}-{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
-        //        });
+        private async void TakePhotoWithCameraAsync()
+        {
+            try
+            {
+                FileResult photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
+                {
+                    Title = $"{SettingsManager.LoggedUser}-{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
+                });
 
-        //        string file = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
-        //        using (Stream stream = await photo.OpenReadAsync())
-        //        using (FileStream newStream = File.OpenWrite(file))
-        //            await stream.CopyToAsync(newStream);
+                string file = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
+                using (Stream stream = await photo.OpenReadAsync())
+                using (FileStream newStream = File.OpenWrite(file))
+                    await stream.CopyToAsync(newStream);
 
-        //        PathToImageSourceProfile = file;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        UserDialogs.Instance.Alert(ex.Message, "Error");
-        //        pathToImageSourceProfile = Constants.PATH_TO_DEFAULT_IMAGE_PROFILE;
-        //    }
-        //}
+                PathToImageSourceProfile = file;
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.Alert(ex.Message, "Error");
+                pathToImageSourceProfile = Constants.PatchToDefaulImageProfile;
+            }
+        }
 
         private async void SaveProfile()
         {
             if (string.IsNullOrWhiteSpace(NickName) || string.IsNullOrWhiteSpace(Name))
-            {               
-                App.Current.MainPage.DisplayAlert("", Resource.ALERT_ADD_EDIT_PROFILE, "ОK");
+            {
+                UserDialogs.Instance.Alert(Resource.AlertAddEditProfile);
                 return;
             }
 
@@ -175,7 +177,7 @@ namespace Contact_App.ViewModels
             }
             catch (Exception ex)
             {
-                App.Current.MainPage.DisplayAlert("Error", ex.Message, "ОK");
+                UserDialogs.Instance.Alert(ex.Message);
             }
         }
 

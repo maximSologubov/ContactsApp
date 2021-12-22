@@ -120,10 +120,10 @@
   <data name="AddProfileTitlePage" xml:space="preserve">
     <value>Add Profile</value>
   </data>
-  <data name="ALERT_ADD_EDIT_PROFILE" xml:space="preserve">
+  <data name="AlertAddEditProfile" xml:space="preserve">
     <value>NickName and Name fields must be filled</value>
   </data>
-  <data name="AUTHETICATION_SUCCESS" xml:space="preserve">
+  <data name="AuthenticationSuccess" xml:space="preserve">
     <value>Success!! Account created</value>
   </data>
   <data name="BlackTextColor" xml:space="preserve">
@@ -138,29 +138,50 @@
   <data name="ButtonColor" xml:space="preserve">
     <value>"#D2691E"</value>
   </data>
+  <data name="ConfirmCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ConfirmOK" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="ConfirmPasswordText" xml:space="preserve">
     <value>Confirm password</value>
+  </data>
+  <data name="DeleteContextAction" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteProfileQuestion" xml:space="preserve">
+    <value>Are you really want to delete this profile?</value>
   </data>
   <data name="DescriptionText" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="EditContextAction" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="EditProfileTitlePage" xml:space="preserve">
     <value>Edit Profile</value>
   </data>
-  <data name="INVALID_LOGIN" xml:space="preserve">
+  <data name="ImageProfileAction" xml:space="preserve">
+    <value>Choose action</value>
+  </data>
+  <data name="InvalidLogin" xml:space="preserve">
     <value>Invalid login. Login must be from 4 to 16 characters and must not start with a number</value>
   </data>
-  <data name="INVALID_LOGIN_OR_PASSWORD" xml:space="preserve">
+  <data name="InvalidLoginOrPassword" xml:space="preserve">
     <value>Invalid login or password!</value>
   </data>
-  <data name="INVALID_PASSWORD" xml:space="preserve">
+  <data name="InvalidPassword" xml:space="preserve">
     <value>Invalid login or password!</value>
+  </data>
+  <data name="LabelSortListBy" xml:space="preserve">
+    <value>Sort list by</value>
+  </data>
+  <data name="LoginTaken" xml:space="preserve">
+    <value>This login is already taken. Come up with another</value>
   </data>
   <data name="LoginText" xml:space="preserve">
     <value>Login</value>
-  </data>
-  <data name="LOGIN_TAKEN" xml:space="preserve">
-    <value>This login is already taken. Come up with another</value>
   </data>
   <data name="NameText" xml:space="preserve">
     <value>Name</value>
@@ -171,11 +192,23 @@
   <data name="NoProfilesLabel" xml:space="preserve">
     <value>No profiles added</value>
   </data>
+  <data name="PasswordMissMatch" xml:space="preserve">
+    <value>Passwords missmatch. Re-enter passwords</value>
+  </data>
   <data name="PasswordText" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="PASSWORD_MISMATCH" xml:space="preserve">
-    <value>Passwords mismatch. Re-enter passwords</value>
+  <data name="PickAtGallery" xml:space="preserve">
+    <value>Pick at Gallery</value>
+  </data>
+  <data name="RadioCreation" xml:space="preserve">
+    <value>Date creation</value>
+  </data>
+  <data name="RadioName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="RadioNickName" xml:space="preserve">
+    <value>NickName</value>
   </data>
   <data name="SignInButtonText" xml:space="preserve">
     <value>SIGN IN</value>
@@ -188,5 +221,8 @@
   </data>
   <data name="SignUpTitlePage" xml:space="preserve">
     <value>Users SignUp</value>
+  </data>
+  <data name="TakePhotoWithCamera" xml:space="preserve">
+    <value>Take photo with camera</value>
   </data>
 </root>

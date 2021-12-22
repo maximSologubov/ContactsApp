@@ -1,4 +1,6 @@
-﻿using Contact_App.Models;
+﻿using Acr.UserDialogs;
+using Contact_App.Models;
+using Contact_App.Resources;
 using Contact_App.Services.DbService;
 using Contact_App.Services.Settings;
 using Contact_App.Views;
@@ -12,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Contact_App.ViewModels
@@ -48,11 +51,11 @@ namespace Contact_App.ViewModels
                 List<ProfileModel> profiles = ProfileList.ToList();
                 //profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
                 ProfileList = new ObservableCollection<ProfileModel>(profiles);
-                //SettingsManager.ChangeSort = false;
+                //SettingsManager.ChangeSort = false;ты
             //}
         }
 
-        ////public void OnNavigatedFrom(INavigationParameters parameters) { }
+       // public void OnNavigatedFrom(INavigationParameters parameters) { }
 
         #endregion
 
@@ -80,9 +83,13 @@ namespace Contact_App.ViewModels
         public DelegateCommand AddEditProfileTapCommand => new DelegateCommand(GoAddEditProfileAsync);
         public DelegateCommand SettingsTapCommand => new DelegateCommand(GoSettingsPageAsync);
 
+        public ICommand DeleteTapCommand => new Command(OnDeleteAsync);
+        public ICommand UpdateTapCommand => new Command(GoUpdateProfileAsync);
+        public ICommand ItemTapCommand => new Command(GoShowItemTapped);
+
         #endregion
 
-        #region Private helpers
+        #region --- Private helpers ---
 
         private async void GoLogOutAsync()
         {
@@ -95,6 +102,57 @@ namespace Contact_App.ViewModels
         }
 
         private async void GoAddEditProfileAsync() => await NavigationService.NavigateAsync(nameof(AddEditProfilePage));
+
+        private async void GoUpdateProfileAsync(object selectedProfile)
+        {
+            ProfileModel profileModel = selectedProfile as ProfileModel;
+
+            if (profileModel != null)
+            {
+                NavigationParameters parameter = new NavigationParameters
+                {
+                    {"profile", profileModel }
+                };
+
+                await NavigationService.NavigateAsync(nameof(AddEditProfilePage), parameter);
+            }
+        }
+
+
+        private async void OnDeleteAsync(object selectedProfile)
+        {
+            ProfileModel profileModel = selectedProfile as ProfileModel;
+
+            if (profileModel != null)
+            {
+                ConfirmConfig confirmConfig = new ConfirmConfig
+                {
+                    Message = Resource.DeleteProfileQuestion,
+                    OkText = Resource.ConfirmOK,
+                    CancelText = Resource.ConfirmCancel
+                };
+
+                if (await UserDialogs.Instance.ConfirmAsync(confirmConfig))
+                {
+                    ProfileList.Remove(ProfileList.First(p => p.Id == profileModel.Id));
+                    IsVisible = ProfileList.Count > 0;
+                    await DbService.DeleteDataAsync(profileModel);
+                }
+            }
+        }
+
+
+        private void GoShowItemTapped(object profile)
+        {
+            ProfileModel profileModel = profile as ProfileModel;
+
+            if (profileModel != null)
+                DialogService.ShowDialog("ItemTappedDialog", new DialogParameters
+                {
+                    {"source", profileModel.ImagePath }
+                });
+        }
+
 
         private async void GoSettingsPageAsync() => await NavigationService.NavigateAsync(nameof(SettingPage));
 
