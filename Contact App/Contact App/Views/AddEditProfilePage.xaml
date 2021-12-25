@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resources="clr-namespace:Contact_App.Resources"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
              Title="{Binding Title}"
              x:Class="Contact_App.Views.AddEditProfilePage">
     <ContentPage.ToolbarItems>
@@ -32,31 +33,33 @@
             <Entry x:Name="nickName"
                    ClearButtonVisibility="WhileEditing"
                    Placeholder="{x:Static resources:Resource.NicknameText}"
-                   PlaceholderColor="#666666"
+                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    VerticalOptions="Center"
                    HorizontalOptions="Fill"
                    FontSize="Medium"
-                   Text="{Binding NickName}"
-                   TextColor="#000000"/>
+                   Text="{Binding NickName}"                   
+                   TextColor="{x:DynamicResource EntryTextColor}"
+                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
             <Entry x:Name="name"
                    ClearButtonVisibility="WhileEditing"
                    Placeholder="{x:Static resources:Resource.NameText}"
-                   PlaceholderColor="#666666"
+                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    VerticalOptions="Center"
                    HorizontalOptions="Fill"
                    FontSize="Medium"
                    Text="{Binding Name}"
-                   TextColor="#000000"/>
+                   TextColor="{x:DynamicResource EntryTextColor}"
+                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
         </StackLayout>
         <Editor Grid.Row="2" 
                 x:Name="editor"
                 Margin="20,0,20,20"
-                BackgroundColor="#d4d4d4"
+                BackgroundColor="{x:DynamicResource AddEditDescriptionBackgroundColor}"
                 Placeholder="{x:Static resources:Resource.DescriptionText}"
                 PlaceholderColor="#666666"
                 MaxLength="120"
                 Text="{Binding Description}"
-                TextColor="#000000"
+                TextColor="{x:DynamicResource EntryTextColor}"
                 FontSize="Medium"/>
     </Grid>
 </ContentPage>

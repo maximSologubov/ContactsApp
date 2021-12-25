@@ -4,8 +4,9 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"             
              xmlns:resources="clr-namespace:Contact_App.Resources"
-             Title="Sign Up"
-             x:Class="Contact_App.Views.SignUpPage">
+             x:Class="Contact_App.Views.SignUpPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             Title="{Binding Title}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,25 +18,34 @@
         <StackLayout  Margin="30" 
                       VerticalOptions="Center" 
                       Spacing="15">
-            <Entry Placeholder="{x:Static resources:Resource.LoginText}"                  
+            <Entry Placeholder="{x:Static resources:Resource.LoginText}"
+                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    ClearButtonVisibility="WhileEditing"                  
-                   Text="{Binding Login}"/>
-            <Entry Placeholder="{x:Static resources:Resource.PasswordText}"                    
+                   Text="{Binding Login}"                  
+                   TextColor="{x:DynamicResource EntryTextColor}"
+                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
+            <Entry Placeholder="{x:Static resources:Resource.PasswordText}"
+                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    IsPassword="True"
                    ClearButtonVisibility="WhileEditing"                  
-                   Text="{Binding Password}"/>
-            <Entry Placeholder="{x:Static resources:Resource.ConfirmPasswordText}"                   
-                   IsPassword="True"
+                   Text="{Binding Password}"
+                   TextColor="{x:DynamicResource EntryTextColor}"
+                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
+            <Entry Placeholder="{x:Static resources:Resource.ConfirmPasswordText}"
+                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
+                   IsPassword="True" 
                    ClearButtonVisibility="WhileEditing"                   
-                   Text="{Binding ConfirmPassword}"/>
+                   Text="{Binding ConfirmPassword}"
+                   TextColor="{x:DynamicResource EntryTextColor}"
+                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
         </StackLayout>
 
         <StackLayout Grid.Row="1" 
                      Margin="30">
             <Button Text="{x:Static resources:Resource.SignUpButtonText}" 
-                    BackgroundColor="#D2691E" 
+                    BackgroundColor="{DynamicResource SignButtonColor}" 
                     BorderWidth="1" 
-                    BorderColor="#696969"
+                    BorderColor="{DynamicResource SignButtonBorderColor}"
                     Command="{Binding SingUpTapCommand}"
                     IsEnabled="{Binding IsButtonSignUpEnabled}">
             </Button>

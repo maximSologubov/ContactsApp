@@ -34,5 +34,11 @@
     <string>Contact_App</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+    <key>CFBundleLocalizations</key>
+    <array>    	
+    	<string>ru</string>
+    </array>
+    <key>CFBundleDevelopmentRegion</key>
+<string>en</string>
 </dict>
 </plist>

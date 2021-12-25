@@ -20,6 +20,7 @@ namespace Contact_App.ViewModels
         INavigationService _navigationService;
         public SignUpPageViewModel(INavigationService navigationService, IRegistration registration, IDbService _dbService) : base(navigationService, _dbService)
          {
+            Title = Resource.SignUpTitlePage;
             _navigationService = navigationService;
             _registration = registration;
         }

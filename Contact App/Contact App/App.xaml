@@ -7,9 +7,9 @@
 
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor"
-                    Value="#2196F3" />
+                    Value="{x:DynamicResource NavBarBackgroundColor}" />
             <Setter Property="BarTextColor"
-                    Value="White" />
+                    Value="{x:DynamicResource NavBarTextColor}" />
         </Style>
     </Application.Resources>
 </prism:PrismApplication>

@@ -19,11 +19,12 @@ using Xamarin.Forms;
 
 namespace Contact_App.ViewModels
 {
-    public class MainListViewModel : ViewModelBase, IInitializeAsync//, INavigatedAware
+    public class MainListViewModel : ViewModelBase, IInitializeAsync, INavigatedAware
     {
-        public MainListViewModel(INavigationService navigationService, IDbService dbService, ISettinngsManager settinngsManager) : base(navigationService, dbService, settinngsManager)
+        public MainListViewModel(INavigationService navigationService, IDbService dbService, ISettinngsManager settinngsManager, IDialogService dialogService) : base(navigationService, dbService, settinngsManager)
         {
-           
+            Title = Resource.MainListTitlePage;
+            DialogService = dialogService;
         }
 
         #region Private fields
@@ -38,7 +39,7 @@ namespace Contact_App.ViewModels
         public async Task InitializeAsync(INavigationParameters parameters)
         {
             List<ProfileModel> profiles = await DbService.GetOwnersProfilesAsync(SettingsManager.LoggedUser);
-           // profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
+            profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
             ProfileList = new ObservableCollection<ProfileModel>(profiles);
 
             IsVisible = ProfileList.Count > 0;
@@ -46,16 +47,16 @@ namespace Contact_App.ViewModels
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            //if (SettingsManager.ChangeSort && parameters.GetNavigationMode() == NavigationMode.Back)
-            //{
+            if (SettingsManager.ChangeSort && parameters.GetNavigationMode() == NavigationMode.Back)
+            {
                 List<ProfileModel> profiles = ProfileList.ToList();
-                //profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
+                profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
                 ProfileList = new ObservableCollection<ProfileModel>(profiles);
-                //SettingsManager.ChangeSort = false;ты
-            //}
+                SettingsManager.ChangeSort = false;
+            }
         }
 
-       // public void OnNavigatedFrom(INavigationParameters parameters) { }
+        public void OnNavigatedFrom(INavigationParameters parameters) {}
 
         #endregion
 

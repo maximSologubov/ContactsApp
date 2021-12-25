@@ -12,6 +12,11 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Contact_App.Dialogs;
+using Contact_App.Themes;
+using Contact_App.Resources;
+using Contact_App.Services.Localization;
+
 namespace Contact_App
 {
     public partial class App : PrismApplication
@@ -76,11 +81,28 @@ namespace Contact_App
             containerRegistry.RegisterForNavigation<SettingPage, SettingPageViewModel>();
             containerRegistry.RegisterForNavigation<AddEditProfilePage, AddEditProfileViewModel>();
 
+            // dialogs
+
+            containerRegistry.RegisterDialog<ItemTappedDialog, ItemTappedDialogModel>();
         }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
+
+            //if (Device.RuntimePlatform != Device.UWP)
+            //{
+            //    Resource.Culture = DependencyService.Get<ILocalize>()
+            //                        .GetCurrentCultureInfo();
+            //}
+
+            SettingsManager.ChangeSort = false;
+
+            ResourceLoader();
+
+            if (string.IsNullOrEmpty(SettingsManager.SortListBy))
+                SettingsManager.SortListBy = "Name";
+
             if (string.IsNullOrEmpty(SettingsManager.LoggedUser))
                 NavigationService.NavigateAsync("NavigationPage/SignInPage");
             else
@@ -92,5 +114,22 @@ namespace Contact_App
         }
         #endregion
 
+        #region Private helpers
+
+        private void ResourceLoader()
+        {
+            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            switch (SettingsManager.DarkTheme)
+            {
+                case false:
+                    mergedDictionaries.Add(new DarkTheme());
+                    break;
+                case true:
+                    mergedDictionaries.Add(new LightTheme());
+                    break;
+            }
+        }
+
+        #endregion
     }
 }

@@ -3,17 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:resources="clr-namespace:Contact_App.Resources"
-             
-             Title="Main List"
+             xmlns:bh="clr-namespace:Contact_App.Behaviors"
+             xmlns:cr="clr-namespace:Contact_App.Converters"             
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             Title="{Binding Title}"
              x:Class="Contact_App.Views.MainListView">
 
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <cr:ItemTappedEventArgsToTapItemConverter x:Key="ItemTappedConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
    
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary"                     
                      Priority="0"
-                     IconImageSource="sign_out.png"                     
+                     IconImageSource="sign_out.png" 
                      Command="{Binding LogOutTapCommand}" />
         <ToolbarItem Order="Primary"                     
                      Priority="1"
@@ -29,7 +36,7 @@
 
         <Label x:Name="label"
                Text="{x:Static resources:Resource.NoProfilesLabel}"
-               TextColor="White"
+               TextColor="{x:DynamicResource NoProfileLabelTextColor}"
                FontSize="36"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
@@ -51,8 +58,12 @@
                   SelectionMode="None"
                   SeparatorVisibility="None"
                   IsVisible="True">
-
-           
+            <ListView.Behaviors>
+                <bh:EventToCommandBehavior 
+                    EventName="ItemTapped"
+                    Command="{Binding Path=BindingContext.ItemTapCommand, Source={x:Reference listView}}"
+                    Converter="{StaticResource ItemTappedConverter}"/>
+            </ListView.Behaviors>
 
             <ListView.Triggers>
                 <DataTrigger TargetType="ListView"
@@ -90,13 +101,13 @@
                                     <Label Text="{Binding NickName}"
                                            FontAttributes="Bold" 
                                            FontSize="Medium"
-                                           TextColor="{x:DynamicResource PrimaryTextColor}"/>
+                                           TextColor="{x:DynamicResource ListUserLabelColor}"/>
                                     <Label Text="{Binding Name}"
                                            FontSize="Medium"
-                                           TextColor="{x:DynamicResource PrimaryTextColor}"/>
+                                           TextColor="{x:DynamicResource ListUserLabelColor}"/>
                                     <Label Text="{Binding CreationTime}"
                                            FontSize="Small"
-                                           TextColor="{x:DynamicResource PrimaryTextColor}"/>
+                                           TextColor="{x:DynamicResource ListUserLabelColor}"/>
                                 </StackLayout>
                             </Grid>
                         </ViewCell.View>
@@ -105,13 +116,13 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Grid.Row="0"                 
-                BorderColor="#273939"
-                BorderWidth="10"
+                BorderColor="{x:DynamicResource AddButtonBorderColor}"
+                BorderWidth="8"
                 FontAttributes="None"
-                BackgroundColor="#1891ff"
+                BackgroundColor="{x:DynamicResource AddButtonColor}"
                 BorderRadius ="50"
                 Text="+"
-                TextColor="White"
+                TextColor="{x:DynamicResource AddButtonTextColor}"
                 FontSize="30"
                 HorizontalOptions="End"
                 VerticalOptions="End"

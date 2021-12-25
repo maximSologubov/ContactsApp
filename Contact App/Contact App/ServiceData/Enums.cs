@@ -17,4 +17,10 @@ namespace Contact_App.ServiceData
         InvalidPassword,
         PasswordMismatch
     }
+    public enum CompareProfileSelector : byte
+    {
+        Name,
+        NickName,
+        DateCreation
+    }
 }

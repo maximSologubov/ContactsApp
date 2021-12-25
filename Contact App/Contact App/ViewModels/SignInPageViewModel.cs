@@ -21,6 +21,7 @@ namespace Contact_App.ViewModels
         ISettinngsManager _settinngsManager;
         public SignInPageViewModel(INavigationService navigationService, IDbService dbService, ISettinngsManager settinngsManager, IAuthorization authorization) : base(navigationService, dbService, settinngsManager)
         {
+            Title = Resource.SignInTitlePage;
             _navigationService = navigationService;
             _settinngsManager = settinngsManager;
             _authorization = authorization;

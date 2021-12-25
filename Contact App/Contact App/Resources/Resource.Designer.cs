@@ -88,42 +88,6 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to #000000.
-        /// </summary>
-        internal static string BlackTextColor {
-            get {
-                return ResourceManager.GetString("BlackTextColor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &quot;#696969&quot;.
-        /// </summary>
-        internal static string ButtonBorderColor {
-            get {
-                return ResourceManager.GetString("ButtonBorderColor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 1.
-        /// </summary>
-        internal static string ButtonBorderValue {
-            get {
-                return ResourceManager.GetString("ButtonBorderValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &quot;#D2691E&quot;.
-        /// </summary>
-        internal static string ButtonColor {
-            get {
-                return ResourceManager.GetString("ButtonColor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string ConfirmCancel {
@@ -223,11 +187,29 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid login or password!.
+        ///   Looks up a localized string similar to Invalid password!.
         /// </summary>
         internal static string InvalidPassword {
             get {
                 return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        internal static string LabelDarkTheme {
+            get {
+                return ResourceManager.GetString("LabelDarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        internal static string LabelLightTheme {
+            get {
+                return ResourceManager.GetString("LabelLightTheme", resourceCulture);
             }
         }
         
@@ -255,6 +237,15 @@ namespace Contact_App.Resources {
         internal static string LoginText {
             get {
                 return ResourceManager.GetString("LoginText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main List.
+        /// </summary>
+        internal static string MainListTitlePage {
+            get {
+                return ResourceManager.GetString("MainListTitlePage", resourceCulture);
             }
         }
         
@@ -336,6 +327,15 @@ namespace Contact_App.Resources {
         internal static string RadioNickName {
             get {
                 return ResourceManager.GetString("RadioNickName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string SettingsTitlePage {
+            get {
+                return ResourceManager.GetString("SettingsTitlePage", resourceCulture);
             }
         }
         

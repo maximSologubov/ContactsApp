@@ -117,112 +117,112 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddProfileTitlePage" xml:space="preserve">
-    <value>Add Profile</value>
+  <data name="AddProfileTitlePage1" xml:space="preserve">
+    <value>Добавить профиль</value>
   </data>
   <data name="AlertAddEditProfile" xml:space="preserve">
-    <value>NickName and Name fields must be filled</value>
+    <value>Поля "Имя" и "Ник" должны быть заполнены</value>
   </data>
   <data name="AuthenticationSuccess" xml:space="preserve">
-    <value>Success!! Account created</value>
+    <value>Поздравляем!  Аккаунт создан</value>
   </data>
   <data name="ConfirmCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Отмена</value>
   </data>
   <data name="ConfirmOK" xml:space="preserve">
-    <value>Delete</value>
+    <value>Удалить</value>
   </data>
   <data name="ConfirmPasswordText" xml:space="preserve">
-    <value>Confirm password</value>
+    <value>Подтвердите пароль</value>
   </data>
   <data name="DeleteContextAction" xml:space="preserve">
-    <value>Delete</value>
+    <value>Удалить</value>
   </data>
   <data name="DeleteProfileQuestion" xml:space="preserve">
-    <value>Are you really want to delete this profile?</value>
+    <value>Вы уверены, что хотите удалить профиль</value>
   </data>
   <data name="DescriptionText" xml:space="preserve">
-    <value>Description</value>
+    <value>Описание</value>
   </data>
   <data name="EditContextAction" xml:space="preserve">
-    <value>Edit</value>
+    <value>Редактировать</value>
   </data>
   <data name="EditProfileTitlePage" xml:space="preserve">
-    <value>Edit Profile</value>
+    <value>Редактирование профиля</value>
   </data>
   <data name="ImageProfileAction" xml:space="preserve">
-    <value>Choose action</value>
+    <value>Выберите действие</value>
   </data>
   <data name="InvalidLogin" xml:space="preserve">
-    <value>Invalid login. Login must be from 4 to 16 characters and must not start with a number</value>
+    <value>Неправильный логин. Длина логина должна быть от 4 до 16 символов, и не начинаться с цифры</value>
   </data>
   <data name="InvalidLoginOrPassword" xml:space="preserve">
-    <value>Invalid login or password!</value>
+    <value>Неправильный логин или пароль</value>
   </data>
   <data name="InvalidPassword" xml:space="preserve">
-    <value>Invalid password!</value>
+    <value>Неправильный пароль</value>
   </data>
   <data name="LabelDarkTheme" xml:space="preserve">
-    <value>Dark</value>
+    <value>Темная</value>
   </data>
   <data name="LabelLightTheme" xml:space="preserve">
-    <value>Light</value>
+    <value>Светлая</value>
   </data>
   <data name="LabelSortListBy" xml:space="preserve">
-    <value>Sort list by</value>
+    <value>Сортироватьб список по</value>
   </data>
   <data name="LoginTaken" xml:space="preserve">
-    <value>This login is already taken. Come up with another</value>
+    <value>Такой логин существует, придумайте другой</value>
   </data>
   <data name="LoginText" xml:space="preserve">
-    <value>Login</value>
+    <value>Логин</value>
   </data>
   <data name="MainListTitlePage" xml:space="preserve">
-    <value>Main List</value>
+    <value>Шлавный список</value>
   </data>
   <data name="NameText" xml:space="preserve">
-    <value>Name</value>
+    <value>Имя</value>
   </data>
   <data name="NicknameText" xml:space="preserve">
-    <value>NickName</value>
+    <value>Ник</value>
   </data>
   <data name="NoProfilesLabel" xml:space="preserve">
-    <value>No profiles added</value>
+    <value>Нет добавленных профилей</value>
   </data>
   <data name="PasswordMissMatch" xml:space="preserve">
-    <value>Passwords missmatch. Re-enter passwords</value>
+    <value>Пароли не равны, повторите ввод паролей</value>
   </data>
   <data name="PasswordText" xml:space="preserve">
-    <value>Password</value>
+    <value>Пароль</value>
   </data>
   <data name="PickAtGallery" xml:space="preserve">
-    <value>Pick at Gallery</value>
+    <value>Добавить из галереи</value>
   </data>
   <data name="RadioCreation" xml:space="preserve">
-    <value>Date creation</value>
+    <value>Дата создания</value>
   </data>
   <data name="RadioName" xml:space="preserve">
-    <value>Name</value>
+    <value>Имя</value>
   </data>
   <data name="RadioNickName" xml:space="preserve">
-    <value>NickName</value>
+    <value>Ник</value>
   </data>
   <data name="SettingsTitlePage" xml:space="preserve">
-    <value>Settings</value>
+    <value>Настройки</value>
   </data>
   <data name="SignInButtonText" xml:space="preserve">
-    <value>SIGN IN</value>
+    <value>Войти</value>
   </data>
   <data name="SignInTitlePage" xml:space="preserve">
-    <value>Users SignIn</value>
+    <value>Вход в систему</value>
   </data>
   <data name="SignUpButtonText" xml:space="preserve">
-    <value>SIGN UP</value>
+    <value>Зарегистрировать</value>
   </data>
   <data name="SignUpTitlePage" xml:space="preserve">
-    <value>Users SignUp</value>
+    <value>Регистрация</value>
   </data>
   <data name="TakePhotoWithCamera" xml:space="preserve">
-    <value>Take photo with camera</value>
+    <value>Добавить при помощи камеры</value>
   </data>
 </root>

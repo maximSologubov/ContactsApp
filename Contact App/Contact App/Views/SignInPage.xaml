@@ -3,7 +3,8 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 x:Class="Contact_App.Views.SignInPage" 
                 xmlns:resources="clr-namespace:Contact_App.Resources"
-                Title="Sign In">
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                Title="{Binding Title}">
 
 
         <Grid>
@@ -15,23 +16,28 @@
         <StackLayout  Margin="30" 
                       VerticalOptions="Center" 
                       Spacing="15">
-            <Entry Placeholder="Login"                    
+            <Entry Placeholder="Login"  
+                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    ClearButtonVisibility="WhileEditing"
-                   Text="{Binding Login}"/>            
-            <Entry Placeholder="Password"                   
+                   Text="{Binding Login}"
+                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"
+                   TextColor="{x:DynamicResource EntryTextColor}"/>            
+            <Entry Placeholder="Password"
+                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    IsPassword="True" 
                    ClearButtonVisibility="WhileEditing"
                    Text="{Binding Password}"
-                   TextColor="{x:DynamicResource PrimaryTextColor}"/>
+                   TextColor="{x:DynamicResource EntryTextColor}"
+                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
         </StackLayout>
 
         <StackLayout Grid.Row="1" 
                      Margin="30">
 
             <Button Text="{x:Static resources:Resource.SignInButtonText}" 
-                    BackgroundColor="#D2691E" 
+                    BackgroundColor="{DynamicResource SignButtonColor}" 
                     BorderWidth="1" 
-                    BorderColor="#696969"
+                    BorderColor="{DynamicResource SignButtonBorderColor}"
                     Command="{Binding OnSignInTapCommand}"
                     IsEnabled="{Binding IsButtonSignInEnabled}">
             </Button>
@@ -41,7 +47,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="{x:Static resources:Resource.SignUpButtonText}" 
-                              TextColor="Blue" 
+                              TextColor="{DynamicResource LinkTextColor}"
                               TextDecorations="Underline"
                               FontSize="Medium">
                             <Span.GestureRecognizers>

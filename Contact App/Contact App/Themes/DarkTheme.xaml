@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Contact_App.Themes.DarkTheme">
+
+    <Color x:Key="PageBackgroundColor">Black</Color>
+    <Color x:Key="SignButtonColor">#D2691E</Color>
+    <Color x:Key="SignButtonBorderColor">#696969</Color>
+    <Color x:Key="LinkTextColor">Blue</Color>
+    <Color x:Key="EntryTextColor">White</Color>
+    <Color x:Key="EntryBackgroundColor">#111111</Color>
+    <Color x:Key="EntryPlaceholderColor">#696969</Color>
+    <Color x:Key="NavBarBackgroundColor">#2196F3</Color>
+    <Color x:Key="NavBarTextColor">White</Color>
+    <Color x:Key="LabelSortColor">White</Color>
+    <Color x:Key="RadioButtonColor">White</Color>
+    <Color x:Key="NoProfileLabelTextColor">#696969</Color>
+    <Color x:Key="AddButtonBorderColor">#555555</Color>
+    <Color x:Key="AddButtonColor">#1891ff</Color>
+    <Color x:Key="AddButtonTextColor">White</Color>
+    <Color x:Key="ListUserLabelColor">#999999</Color>
+    <Color x:Key="LabelThemeTextColor">White</Color>
+    <Color x:Key="AddEditDescriptionBackgroundColor">#111111</Color>
+</ResourceDictionary>
