@@ -8,9 +8,10 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-
+using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.Forms;
 
 namespace Contact_App.ViewModels
@@ -26,8 +27,9 @@ namespace Contact_App.ViewModels
         #region --- Private fields ---
 
         private object sortSelection;
-        private string oldSortSelection;
-        private bool isToogled;       
+        private object languageSelection;
+        private bool isDark;
+        private bool refresh = false;
 
         #endregion
         #region  --- Properties ---
@@ -36,12 +38,22 @@ namespace Contact_App.ViewModels
         {
             get => sortSelection;
             set => SetProperty(ref sortSelection, value);
+        } 
+        public object LanguageSelection
+        {
+            get => languageSelection;
+            set => SetProperty(ref languageSelection, value);
         }
 
-        public bool IsToogled
+        public bool IsDark
         {
-            get => isToogled;
-            set => SetProperty(ref isToogled, value);
+            get => isDark;
+            set => SetProperty(ref isDark, value);
+        }
+        public bool Refresh
+        {
+            get => refresh;
+            set => SetProperty(ref refresh, value);
         }
 
         #endregion
@@ -73,24 +85,56 @@ namespace Contact_App.ViewModels
                     case "Date creation":
                         SortSelection = "Date creation";
                         break;
-                }
-                oldSortSelection = sortList;
+                }               
+            }
+            string language = SettingsManager.Language;
+            LocalizationResourceManager.Current.CurrentCulture = new CultureInfo(language);
+            if (!string.IsNullOrEmpty(language))
+            {
+                switch (language)
+                {
+                    case "en":
+                        LanguageSelection = "en";
+                        Refresh = true;
+                        break;
+                    case "ru":
+                        LanguageSelection = "ru";
+                        Refresh = true;
+                        break;
+                }               
             }
 
-            IsToogled = SettingsManager.DarkTheme;
-           
+            IsDark = SettingsManager.DarkTheme;
+            OnChangeTheme();
+
         }
 
         protected async override void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
 
-            if (args.PropertyName == nameof(IsToogled))
+            if (args.PropertyName == nameof(IsDark))
+            {
+                SettingsManager.DarkTheme = IsDark;
                 OnChangeTheme();
+            }
+                
 
             if (args.PropertyName == nameof(SortSelection) && SettingsManager.ChangeSort == true)
             {                
                 await NavigationService.GoBackAsync();
+            }
+            if (args.PropertyName == nameof(LanguageSelection))
+            {
+
+                LocalizationResourceManager.Current.CurrentCulture = new CultureInfo(LanguageSelection.ToString());
+                if (Refresh) {
+                    SettingsManager.Language = LanguageSelection.ToString();
+                    await NavigationService.NavigateAsync(nameof(SettingPage));
+                    NavigationPage page = (NavigationPage)App.Current.MainPage;
+                    page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);                    
+                    Refresh = false;
+                }
             }
 
         }
@@ -100,12 +144,11 @@ namespace Contact_App.ViewModels
         #region  --- Implement interface ---
 
         public async void OnNavigatedFrom(INavigationParameters parameters)
-        {
-            if (oldSortSelection != SortSelection.ToString())
-            {
-                SettingsManager.SortListBy = SortSelection.ToString();
-            }
-            SettingsManager.DarkTheme = IsToogled;
+        {            
+            SettingsManager.SortListBy = SortSelection.ToString();
+            SettingsManager.DarkTheme = IsDark;
+            SettingsManager.Language = LanguageSelection.ToString();
+
         }
 
         public void OnNavigatedTo(INavigationParameters parameters) 
@@ -124,7 +167,7 @@ namespace Contact_App.ViewModels
             {
                 mergedDictionaries.Clear();
 
-                switch (IsToogled)
+                switch (IsDark)
                 {
                     case true:
                         mergedDictionaries.Add(new DarkTheme());

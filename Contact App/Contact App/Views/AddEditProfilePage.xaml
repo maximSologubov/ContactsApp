@@ -56,7 +56,7 @@
                 Margin="20,0,20,20"
                 BackgroundColor="{x:DynamicResource AddEditDescriptionBackgroundColor}"
                 Placeholder="{x:Static resources:Resource.DescriptionText}"
-                PlaceholderColor="#666666"
+                PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                 MaxLength="120"
                 Text="{Binding Description}"
                 TextColor="{x:DynamicResource EntryTextColor}"

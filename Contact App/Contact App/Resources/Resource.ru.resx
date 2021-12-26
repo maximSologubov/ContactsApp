@@ -150,6 +150,9 @@
   <data name="EditProfileTitlePage" xml:space="preserve">
     <value>Редактирование профиля</value>
   </data>
+  <data name="EnglishLangText" xml:space="preserve">
+    <value>Английский</value>
+  </data>
   <data name="ImageProfileAction" xml:space="preserve">
     <value>Выберите действие</value>
   </data>
@@ -168,8 +171,11 @@
   <data name="LabelLightTheme" xml:space="preserve">
     <value>Светлая</value>
   </data>
+  <data name="LabelSelectLanguage" xml:space="preserve">
+    <value>Выбор языка:</value>
+  </data>
   <data name="LabelSortListBy" xml:space="preserve">
-    <value>Сортироватьб список по</value>
+    <value>Сортировать список:</value>
   </data>
   <data name="LoginTaken" xml:space="preserve">
     <value>Такой логин существует, придумайте другой</value>
@@ -178,7 +184,7 @@
     <value>Логин</value>
   </data>
   <data name="MainListTitlePage" xml:space="preserve">
-    <value>Шлавный список</value>
+    <value>Главный список</value>
   </data>
   <data name="NameText" xml:space="preserve">
     <value>Имя</value>
@@ -207,6 +213,9 @@
   <data name="RadioNickName" xml:space="preserve">
     <value>Ник</value>
   </data>
+  <data name="RussianLangText" xml:space="preserve">
+    <value>Русский</value>
+  </data>
   <data name="SettingsTitlePage" xml:space="preserve">
     <value>Настройки</value>
   </data>
@@ -218,6 +227,9 @@
   </data>
   <data name="SignUpButtonText" xml:space="preserve">
     <value>Зарегистрировать</value>
+  </data>
+  <data name="SignUpLinkText" xml:space="preserve">
+    <value>Регистрация</value>
   </data>
   <data name="SignUpTitlePage" xml:space="preserve">
     <value>Регистрация</value>

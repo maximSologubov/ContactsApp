@@ -160,6 +160,15 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        internal static string EnglishLangText {
+            get {
+                return ResourceManager.GetString("EnglishLangText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose action.
         /// </summary>
         internal static string ImageProfileAction {
@@ -210,6 +219,15 @@ namespace Contact_App.Resources {
         internal static string LabelLightTheme {
             get {
                 return ResourceManager.GetString("LabelLightTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language selection:.
+        /// </summary>
+        internal static string LabelSelectLanguage {
+            get {
+                return ResourceManager.GetString("LabelSelectLanguage", resourceCulture);
             }
         }
         
@@ -331,6 +349,15 @@ namespace Contact_App.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Russian.
+        /// </summary>
+        internal static string RussianLangText {
+            get {
+                return ResourceManager.GetString("RussianLangText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string SettingsTitlePage {
@@ -363,6 +390,15 @@ namespace Contact_App.Resources {
         internal static string SignUpButtonText {
             get {
                 return ResourceManager.GetString("SignUpButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SIGN UP.
+        /// </summary>
+        internal static string SignUpLinkText {
+            get {
+                return ResourceManager.GetString("SignUpLinkText", resourceCulture);
             }
         }
         

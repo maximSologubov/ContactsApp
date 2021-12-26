@@ -11,6 +11,8 @@ using Contact_App.Services.DbService;
 using Contact_App.Services.Authorization;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using Xamarin.CommunityToolkit.Helpers;
+using System.Globalization;
 
 namespace Contact_App.ViewModels
 {
@@ -84,6 +86,7 @@ namespace Contact_App.ViewModels
         public override void Initialize(INavigationParameters parameters)
         {
             Login = (string)parameters["login"];
+            LocalizationResourceManager.Current.CurrentCulture = new CultureInfo(SettingsManager.Language.ToString());
         }
 
         #endregion

@@ -150,6 +150,9 @@
   <data name="EditProfileTitlePage" xml:space="preserve">
     <value>Edit Profile</value>
   </data>
+  <data name="EnglishLangText" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="ImageProfileAction" xml:space="preserve">
     <value>Choose action</value>
   </data>
@@ -167,6 +170,9 @@
   </data>
   <data name="LabelLightTheme" xml:space="preserve">
     <value>Light</value>
+  </data>
+  <data name="LabelSelectLanguage" xml:space="preserve">
+    <value>Language selection:</value>
   </data>
   <data name="LabelSortListBy" xml:space="preserve">
     <value>Sort list by</value>
@@ -207,6 +213,9 @@
   <data name="RadioNickName" xml:space="preserve">
     <value>NickName</value>
   </data>
+  <data name="RussianLangText" xml:space="preserve">
+    <value>Russian</value>
+  </data>
   <data name="SettingsTitlePage" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -217,6 +226,9 @@
     <value>Users SignIn</value>
   </data>
   <data name="SignUpButtonText" xml:space="preserve">
+    <value>SIGN UP</value>
+  </data>
+  <data name="SignUpLinkText" xml:space="preserve">
     <value>SIGN UP</value>
   </data>
   <data name="SignUpTitlePage" xml:space="preserve">

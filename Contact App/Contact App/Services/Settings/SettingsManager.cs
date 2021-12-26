@@ -17,6 +17,11 @@ namespace Contact_App.Services.Settings
             get => Preferences.Get(nameof(SortListBy), "");
             set => Preferences.Set(nameof(SortListBy), value);
         }
+         public string Language
+        {
+            get => Preferences.Get(nameof(Language), "");
+            set => Preferences.Set(nameof(Language), value);
+        }
 
         public bool ChangeSort
         {

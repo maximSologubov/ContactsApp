@@ -21,4 +21,5 @@
     <Color x:Key="ListUserLabelColor">#999999</Color>
     <Color x:Key="LabelThemeTextColor">White</Color>
     <Color x:Key="AddEditDescriptionBackgroundColor">#111111</Color>
+    <Color x:Key="LabelSelectLanguageTextColor">white</Color>
 </ResourceDictionary>

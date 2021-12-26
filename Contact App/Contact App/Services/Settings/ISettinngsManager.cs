@@ -8,6 +8,7 @@ namespace Contact_App.Services.Settings
     {
         string LoggedUser { get ; set; }
         string SortListBy { get; set; }
+        string Language { get; set; }
         bool ChangeSort { get; set; }
         bool DarkTheme { get; set; }
 

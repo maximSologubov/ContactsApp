@@ -46,7 +46,7 @@
                    VerticalOptions="CenterAndExpand">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{x:Static resources:Resource.SignUpButtonText}" 
+                        <Span Text="{x:Static resources:Resource.SignUpLinkText}" 
                               TextColor="{DynamicResource LinkTextColor}"
                               TextDecorations="Underline"
                               FontSize="Medium">

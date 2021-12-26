@@ -11,10 +11,12 @@ using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.Forms;
 
 namespace Contact_App.ViewModels
@@ -41,11 +43,10 @@ namespace Contact_App.ViewModels
             List<ProfileModel> profiles = await DbService.GetOwnersProfilesAsync(SettingsManager.LoggedUser);
             profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
             ProfileList = new ObservableCollection<ProfileModel>(profiles);
-
             IsVisible = ProfileList.Count > 0;
         }
 
-        public void OnNavigatedTo(INavigationParameters parameters)
+        public async void OnNavigatedTo(INavigationParameters parameters)
         {
             if (SettingsManager.ChangeSort && parameters.GetNavigationMode() == NavigationMode.Back)
             {
@@ -53,6 +54,11 @@ namespace Contact_App.ViewModels
                 profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
                 ProfileList = new ObservableCollection<ProfileModel>(profiles);
                 SettingsManager.ChangeSort = false;
+                LocalizationResourceManager.Current.CurrentCulture = new CultureInfo(SettingsManager.Language.ToString());
+                await NavigationService.NavigateAsync(nameof(MainListView));
+                NavigationPage page = (NavigationPage)App.Current.MainPage;
+                page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);
+                
             }
         }
 

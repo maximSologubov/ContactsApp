@@ -16,6 +16,9 @@ using Contact_App.Dialogs;
 using Contact_App.Themes;
 using Contact_App.Resources;
 using Contact_App.Services.Localization;
+using Xamarin.CommunityToolkit.Helpers;
+using System.Globalization;
+using Contact_App.Resources;
 
 namespace Contact_App
 {
@@ -90,18 +93,18 @@ namespace Contact_App
         {
             InitializeComponent();
 
-            //if (Device.RuntimePlatform != Device.UWP)
-            //{
-            //    Resource.Culture = DependencyService.Get<ILocalize>()
-            //                        .GetCurrentCultureInfo();
-            //}
+            LocalizationResourceManager.Current.PropertyChanged += (sender, e) => Resource.Culture = LocalizationResourceManager.Current.CurrentCulture;
+            LocalizationResourceManager.Current.Init(Resource.ResourceManager);
+            LocalizationResourceManager.Current.CurrentCulture = new CultureInfo(SettingsManager.Language);
 
             SettingsManager.ChangeSort = false;
 
             ResourceLoader();
 
             if (string.IsNullOrEmpty(SettingsManager.SortListBy))
-                SettingsManager.SortListBy = "Name";
+                SettingsManager.SortListBy = "Name"; 
+            if (string.IsNullOrEmpty(SettingsManager.Language))
+                SettingsManager.Language = "en";
 
             if (string.IsNullOrEmpty(SettingsManager.LoggedUser))
                 NavigationService.NavigateAsync("NavigationPage/SignInPage");
@@ -122,10 +125,10 @@ namespace Contact_App
             switch (SettingsManager.DarkTheme)
             {
                 case false:
-                    mergedDictionaries.Add(new DarkTheme());
+                    mergedDictionaries.Add(new LightTheme());
                     break;
                 case true:
-                    mergedDictionaries.Add(new LightTheme());
+                    mergedDictionaries.Add(new DarkTheme());
                     break;
             }
         }

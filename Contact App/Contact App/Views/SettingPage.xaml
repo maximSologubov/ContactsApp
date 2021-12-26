@@ -8,7 +8,8 @@
 
     <Grid Margin="20, 30, 0, 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="4*" />
         </Grid.RowDefinitions>
 
@@ -31,33 +32,49 @@
                          Value="Date creation"
                          TextColor="{x:DynamicResource RadioButtonColor}"/>
         </StackLayout>
+        <StackLayout Grid.Row="1"
+                     RadioButtonGroup.GroupName="LanguageSelect"
+                     RadioButtonGroup.SelectedValue="{Binding LanguageSelection}">
+            <Label Text="{x:Static resources:Resource.LabelSelectLanguage}"
+                   FontSize="32"
+                   TextColor="{x:DynamicResource LabelSelectLanguageTextColor}"/>
 
-        <Grid Grid.Row="1">
+            <RadioButton Content="{x:Static resources:Resource.EnglishLangText}"
+                         Value="en"
+                         TextColor="{x:DynamicResource RadioButtonColor}"/>
+            <RadioButton Content="{x:Static resources:Resource.RussianLangText}"
+                         Value="ru"
+                         TextColor="{x:DynamicResource RadioButtonColor}"/>
+        </StackLayout>
+
+        <Grid Grid.Row="2">
             
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*" />
-                <ColumnDefinition Width="0.4*" />
-                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0"
+            <Label Grid.Column="1"
                    Text="{x:Static resources:Resource.LabelLightTheme }"
                    TextColor="{x:DynamicResource LabelThemeTextColor}"
-                   FontSize="24"
-                   HorizontalOptions="End"
+                   FontSize="20"
+                   HorizontalOptions="EndAndExpand"
                    VerticalOptions="Center"/>
             <Switch x:Name="switch"
-                    Grid.Column="1"
-                    IsToggled="{Binding IsToogled}"
+                    Grid.Column="2"
+                    IsToggled="{Binding IsDark}"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     >
             </Switch>
-            <Label Grid.Column="2"
+            <Label Grid.Column="3"
                    Text="{x:Static resources:Resource.LabelDarkTheme}"
                    TextColor="{x:DynamicResource LabelThemeTextColor}"
-                   FontSize="24"
-                   HorizontalOptions="Start"
+                   FontSize="20"
+                   HorizontalOptions="StartAndExpand"
                    VerticalOptions="Center"/>
 
         </Grid>
