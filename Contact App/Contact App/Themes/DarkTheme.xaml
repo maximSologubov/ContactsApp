@@ -10,7 +10,7 @@
     <Color x:Key="EntryTextColor">White</Color>
     <Color x:Key="EntryBackgroundColor">#111111</Color>
     <Color x:Key="EntryPlaceholderColor">#696969</Color>
-    <Color x:Key="NavBarBackgroundColor">#2196F3</Color>
+    <Color x:Key="NavBarBackgroundColor">#555555</Color>
     <Color x:Key="NavBarTextColor">White</Color>
     <Color x:Key="LabelSortColor">White</Color>
     <Color x:Key="RadioButtonColor">White</Color>
