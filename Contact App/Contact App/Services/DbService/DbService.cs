@@ -11,14 +11,13 @@ namespace Contact_App.Services.DbService
     {
         public DbService(IRepository _repository) => repository = _repository;
 
-
-        #region Private fields
+        #region --- Private fields ---
 
         private IRepository repository;
 
         #endregion
 
-        #region Public methods
+        #region --- Public methods ---
 
         public Task<int> DeleteDataAsync<T>(T entity) where T : IEntityBase, new() => repository.DeleteAsync(entity);
 

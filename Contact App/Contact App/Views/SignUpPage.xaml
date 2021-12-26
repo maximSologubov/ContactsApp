@@ -18,12 +18,14 @@
         <StackLayout  Margin="30" 
                       VerticalOptions="Center" 
                       Spacing="15">
+            
             <Entry Placeholder="{x:Static resources:Resource.LoginText}"
                    PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    ClearButtonVisibility="WhileEditing"                  
                    Text="{Binding Login}"                  
                    TextColor="{x:DynamicResource EntryTextColor}"
                    BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
+            
             <Entry Placeholder="{x:Static resources:Resource.PasswordText}"
                    PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    IsPassword="True"
@@ -31,6 +33,7 @@
                    Text="{Binding Password}"
                    TextColor="{x:DynamicResource EntryTextColor}"
                    BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
+            
             <Entry Placeholder="{x:Static resources:Resource.ConfirmPasswordText}"
                    PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                    IsPassword="True" 
@@ -38,10 +41,12 @@
                    Text="{Binding ConfirmPassword}"
                    TextColor="{x:DynamicResource EntryTextColor}"
                    BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
+            
         </StackLayout>
 
         <StackLayout Grid.Row="1" 
                      Margin="30">
+            
             <Button Text="{x:Static resources:Resource.SignUpButtonText}" 
                     BackgroundColor="{DynamicResource SignButtonColor}" 
                     BorderWidth="1" 
@@ -49,6 +54,7 @@
                     Command="{Binding SingUpTapCommand}"
                     IsEnabled="{Binding IsButtonSignUpEnabled}">
             </Button>
+            
         </StackLayout>
     </Grid>
 </ContentPage>

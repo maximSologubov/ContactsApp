@@ -28,19 +28,18 @@ namespace Contact_App.ViewModels
             Title = Resource.MainListTitlePage;
             DialogService = dialogService;
         }
-
-        #region Private fields
+        #region --- Private fields ---
 
         private ObservableCollection<ProfileModel> profileList;
         private bool isVisible = false;
 
         #endregion
 
-        #region Implement interfaces
-
+        #region --- Implement interfaces ---
         public async Task InitializeAsync(INavigationParameters parameters)
         {
             List<ProfileModel> profiles = await DbService.GetOwnersProfilesAsync(SettingsManager.LoggedUser);
+
             profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
             ProfileList = new ObservableCollection<ProfileModel>(profiles);
             IsVisible = ProfileList.Count > 0;
@@ -51,12 +50,19 @@ namespace Contact_App.ViewModels
             if (SettingsManager.ChangeSort && parameters.GetNavigationMode() == NavigationMode.Back)
             {
                 List<ProfileModel> profiles = ProfileList.ToList();
+
                 profiles.Sort(new ProfileModelComparer(SettingsManager.SortListBy));
+
                 ProfileList = new ObservableCollection<ProfileModel>(profiles);
+
                 SettingsManager.ChangeSort = false;
+
                 LocalizationResourceManager.Current.CurrentCulture = new CultureInfo(SettingsManager.Language.ToString());
+
                 await NavigationService.NavigateAsync(nameof(MainListView));
+
                 NavigationPage page = (NavigationPage)App.Current.MainPage;
+
                 page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);
                 
             }
@@ -66,16 +72,13 @@ namespace Contact_App.ViewModels
 
         #endregion
 
-        #region Properties
-
+        #region --- Properties ---
         public ObservableCollection<ProfileModel> ProfileList
         {
             get => profileList;
             set => SetProperty(ref profileList, value);
         }
-
         public IDialogService DialogService { get; }
-
         public bool IsVisible
         {
             get => isVisible;
@@ -84,8 +87,7 @@ namespace Contact_App.ViewModels
 
         #endregion
 
-        #region Commands
-
+        #region --- Commands ---
         public DelegateCommand LogOutTapCommand => new DelegateCommand(GoLogOutAsync);
         public DelegateCommand AddEditProfileTapCommand => new DelegateCommand(GoAddEditProfileAsync);
         public DelegateCommand SettingsTapCommand => new DelegateCommand(GoSettingsPageAsync);
@@ -97,19 +99,17 @@ namespace Contact_App.ViewModels
         #endregion
 
         #region --- Private helpers ---
-
         private async void GoLogOutAsync()
         {
             SettingsManager.LoggedUser = "";
             await NavigationService.NavigateAsync(nameof(SignInPage));
 
             NavigationPage page = (NavigationPage)App.Current.MainPage;
+
             while (page.Navigation.NavigationStack.Count > 1)
                 page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);
         }
-
         private async void GoAddEditProfileAsync() => await NavigationService.NavigateAsync(nameof(AddEditProfilePage));
-
         private async void GoUpdateProfileAsync(object selectedProfile)
         {
             ProfileModel profileModel = selectedProfile as ProfileModel;
@@ -124,8 +124,6 @@ namespace Contact_App.ViewModels
                 await NavigationService.NavigateAsync(nameof(AddEditProfilePage), parameter);
             }
         }
-
-
         private async void OnDeleteAsync(object selectedProfile)
         {
             ProfileModel profileModel = selectedProfile as ProfileModel;
@@ -147,8 +145,6 @@ namespace Contact_App.ViewModels
                 }
             }
         }
-
-
         private void GoShowItemTapped(object profile)
         {
             ProfileModel profileModel = profile as ProfileModel;
@@ -159,11 +155,8 @@ namespace Contact_App.ViewModels
                     {"source", profileModel.ImagePath }
                 });
         }
-
-
         private async void GoSettingsPageAsync() => await NavigationService.NavigateAsync(nameof(SettingPage));
 
         #endregion
-
     }
 }

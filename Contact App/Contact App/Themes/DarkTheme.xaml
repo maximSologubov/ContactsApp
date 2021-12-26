@@ -22,4 +22,5 @@
     <Color x:Key="LabelThemeTextColor">White</Color>
     <Color x:Key="AddEditDescriptionBackgroundColor">#111111</Color>
     <Color x:Key="LabelSelectLanguageTextColor">white</Color>
+    
 </ResourceDictionary>

@@ -16,14 +16,13 @@ namespace Contact_App.Dialogs
             CloseCommand = new DelegateCommand(() => RequestClose(null));
         }
 
-        #region Commands
+        #region --- Commands ---
 
         public DelegateCommand CloseCommand { get; }
 
         #endregion
 
-
-        #region Properties
+        #region --- Properties ---
 
         private string pathToSourceImageProfile;
         public string PathToSourceImageProfile
@@ -34,8 +33,7 @@ namespace Contact_App.Dialogs
 
         #endregion
 
-
-        #region Public methods
+        #region --- Public methods ---
 
         public bool CanCloseDialog() => true;
 
@@ -45,6 +43,5 @@ namespace Contact_App.Dialogs
         public void OnDialogOpened(IDialogParameters parameters) => PathToSourceImageProfile = parameters.GetValue<string>("source");
 
         #endregion
-
     }
 }

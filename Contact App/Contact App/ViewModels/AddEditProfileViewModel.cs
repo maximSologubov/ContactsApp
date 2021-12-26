@@ -35,7 +35,7 @@ namespace Contact_App.ViewModels
 
         #endregion
 
-        #region Commands
+        #region --- Commands ---
 
         public DelegateCommand ImageTapCommand => new DelegateCommand(OpenActionSheet);
         public DelegateCommand SaveTapCommand => new DelegateCommand(SaveProfile);
@@ -49,30 +49,25 @@ namespace Contact_App.ViewModels
             get => pathToImageSourceProfile;
             set => SetProperty(ref pathToImageSourceProfile, value);
         }
-
         public string NickName
         {
             get => nickName;
             set => SetProperty(ref nickName, value);
         }
-
         public string Name
         {
             get => name;
             set => SetProperty(ref name, value);
         }
-
         public string Description
         {
             get => description;
             set => SetProperty(ref description, value);
         }
 
-
         #endregion
 
-        #region Override
-
+        #region --- Override ---
         public override void Initialize(INavigationParameters parameters)
         {
             profile = parameters.GetValue<ProfileModel>("profile");
@@ -90,7 +85,6 @@ namespace Contact_App.ViewModels
         #endregion
 
         #region --- Private helpers ---
-
         private void OpenActionSheet()
         {
             UserDialogs.Instance.ActionSheet(new ActionSheetConfig()
@@ -98,7 +92,6 @@ namespace Contact_App.ViewModels
                                              .Add(Resource.PickAtGallery, GetPhotoAtGalleryAsync, "gallery.png")
                                              .Add(Resource.TakePhotoWithCamera, TakePhotoWithCameraAsync, "camera.png"));
         }
-
         private async void GetPhotoAtGalleryAsync()
         {
             try
@@ -111,9 +104,7 @@ namespace Contact_App.ViewModels
                 UserDialogs.Instance.Alert(ex.Message, "Error");
                 pathToImageSourceProfile = Constants.PatchToDefaulImageProfile;
             }
-
         }
-
         private async void TakePhotoWithCameraAsync()
         {
             try
@@ -136,7 +127,6 @@ namespace Contact_App.ViewModels
                 pathToImageSourceProfile = Constants.PatchToDefaulImageProfile;
             }
         }
-
         private async void SaveProfile()
         {
             if (string.IsNullOrWhiteSpace(NickName) || string.IsNullOrWhiteSpace(Name))
@@ -182,6 +172,5 @@ namespace Contact_App.ViewModels
         }
 
         #endregion
-
     }
 }

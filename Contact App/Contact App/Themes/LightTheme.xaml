@@ -22,6 +22,4 @@
     <Color x:Key="AddEditDescriptionBackgroundColor">#d4d4d4</Color>
     <Color x:Key="LabelSelectLanguageTextColor">black</Color>
 
-
-
 </ResourceDictionary>

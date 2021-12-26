@@ -15,14 +15,12 @@ namespace Contact_App.Validators
             return IsPasswordValid(data);
         }
 
-
         private static bool IsLoginValid(string login)
         {
             var regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9-_\.]{3,15}$");
             
             return regex.IsMatch(login);
         }
-
 
         private static bool IsPasswordValid(string password)
         {

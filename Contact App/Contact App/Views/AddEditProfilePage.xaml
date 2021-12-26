@@ -5,12 +5,15 @@
              BackgroundColor="{DynamicResource PageBackgroundColor}"
              Title="{Binding Title}"
              x:Class="Contact_App.Views.AddEditProfilePage">
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary"                    
                      IconImageSource="save.png"
                      Command="{Binding SaveTapCommand}"/>
     </ContentPage.ToolbarItems>
+    
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -21,6 +24,7 @@
                Source="{Binding PathToImageSourceProfile}"
                Aspect="AspectFit"
                Margin="0,5,0,0">
+            
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding ImageTapCommand}" />
             </Image.GestureRecognizers>
@@ -30,6 +34,7 @@
                      Margin="30"
                      VerticalOptions="Center"
                      Spacing="15">
+            
             <Entry x:Name="nickName"
                    ClearButtonVisibility="WhileEditing"
                    Placeholder="{x:Static resources:Resource.NicknameText}"
@@ -40,6 +45,7 @@
                    Text="{Binding NickName}"                   
                    TextColor="{x:DynamicResource EntryTextColor}"
                    BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
+            
             <Entry x:Name="name"
                    ClearButtonVisibility="WhileEditing"
                    Placeholder="{x:Static resources:Resource.NameText}"
@@ -50,7 +56,9 @@
                    Text="{Binding Name}"
                    TextColor="{x:DynamicResource EntryTextColor}"
                    BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
+            
         </StackLayout>
+        
         <Editor Grid.Row="2" 
                 x:Name="editor"
                 Margin="20,0,20,20"
@@ -61,5 +69,7 @@
                 Text="{Binding Description}"
                 TextColor="{x:DynamicResource EntryTextColor}"
                 FontSize="Medium"/>
+        
     </Grid>
+    
 </ContentPage>

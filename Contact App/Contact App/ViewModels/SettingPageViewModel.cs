@@ -32,8 +32,8 @@ namespace Contact_App.ViewModels
         private bool refresh = false;
 
         #endregion
-        #region  --- Properties ---
 
+        #region  --- Properties ---
         public object SortSelection
         {
             get => sortSelection;
@@ -44,7 +44,6 @@ namespace Contact_App.ViewModels
             get => languageSelection;
             set => SetProperty(ref languageSelection, value);
         }
-
         public bool IsDark
         {
             get => isDark;
@@ -58,20 +57,17 @@ namespace Contact_App.ViewModels
 
         #endregion
 
-        #region Commands
-
+        #region --- Commands ---
         public DelegateCommand SwitchTapCommand => new DelegateCommand(OnChangeTheme);
 
         #endregion
 
-
-        #region Overrides
-
+        #region --- Overrides ---
         public override void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
 
-            string sortList = SettingsManager.SortListBy;
+            string sortList = SettingsManager.SortListBy;            
             if (!string.IsNullOrEmpty(sortList))
             {
                 switch (sortList)
@@ -79,14 +75,17 @@ namespace Contact_App.ViewModels
                     case "Name":
                         SortSelection = "Name";
                         break;
+
                     case "NickName":
                         SortSelection = "NickName";
                         break;
+
                     case "Date creation":
                         SortSelection = "Date creation";
                         break;
                 }               
             }
+
             string language = SettingsManager.Language;
             LocalizationResourceManager.Current.CurrentCulture = new CultureInfo(language);
             if (!string.IsNullOrEmpty(language))
@@ -106,9 +105,7 @@ namespace Contact_App.ViewModels
 
             IsDark = SettingsManager.DarkTheme;
             OnChangeTheme();
-
         }
-
         protected async override void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
@@ -118,37 +115,36 @@ namespace Contact_App.ViewModels
                 SettingsManager.DarkTheme = IsDark;
                 OnChangeTheme();
             }
-                
 
             if (args.PropertyName == nameof(SortSelection) && SettingsManager.ChangeSort == true)
             {                
                 await NavigationService.GoBackAsync();
             }
+
             if (args.PropertyName == nameof(LanguageSelection))
             {
-
                 LocalizationResourceManager.Current.CurrentCulture = new CultureInfo(LanguageSelection.ToString());
+
                 if (Refresh) {
+
                     SettingsManager.Language = LanguageSelection.ToString();
+
                     await NavigationService.NavigateAsync(nameof(SettingPage));
                     NavigationPage page = (NavigationPage)App.Current.MainPage;
                     page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);                    
                     Refresh = false;
                 }
             }
-
         }
 
         #endregion
 
         #region  --- Implement interface ---
-
         public async void OnNavigatedFrom(INavigationParameters parameters)
         {            
             SettingsManager.SortListBy = SortSelection.ToString();
             SettingsManager.DarkTheme = IsDark;
             SettingsManager.Language = LanguageSelection.ToString();
-
         }
 
         public void OnNavigatedTo(INavigationParameters parameters) 
@@ -158,11 +154,11 @@ namespace Contact_App.ViewModels
 
         #endregion
 
-        #region  --- Private helpers ---
-        
+        #region  --- Private helpers ---        
         private void OnChangeTheme()
         {
             ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+
             if (mergedDictionaries != null)
             {
                 mergedDictionaries.Clear();

@@ -28,8 +28,7 @@ namespace Contact_App.ViewModels
             _settinngsManager = settinngsManager;
             _authorization = authorization;
         }
-        public DelegateCommand OnSignUpTapCommand => new DelegateCommand(GoSignUp);
-        public DelegateCommand OnSignInTapCommand => new DelegateCommand(AuthorizationUser, CanExecute);
+       
 
         #region --- Private fields ---
 
@@ -40,8 +39,14 @@ namespace Contact_App.ViewModels
 
         #endregion
 
+        #region --- Commands ---
+        public DelegateCommand OnSignUpTapCommand => new DelegateCommand(GoSignUp);
+        public DelegateCommand OnSignInTapCommand => new DelegateCommand(AuthorizationUser, CanExecute);
+
+        #endregion
+
         #region --- Public Properties ---  
-        
+
         public string Login
         {
             get => _login;
@@ -62,18 +67,16 @@ namespace Contact_App.ViewModels
         #endregion
 
         #region --- Overrides ---
-
         protected override void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
             if (args.PropertyName == nameof(Login) || args.PropertyName == nameof(Password))
             {
                 System.Console.WriteLine(args.PropertyName);
+
                 if (!string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password))
                 {
-
                     IsButtonSignInEnabled = true;
-
                 }
                 else
                 {
@@ -104,8 +107,7 @@ namespace Contact_App.ViewModels
                 SettingsManager.LoggedUser = Login;
 
                 await NavigationService.NavigateAsync(nameof(MainListView));
-
-                // clear navigation stack
+                
                 NavigationPage page = (NavigationPage)App.Current.MainPage;
                 while (page.Navigation.NavigationStack.Count > 1)
                     page.Navigation.RemovePage(page.Navigation.NavigationStack[page.Navigation.NavigationStack.Count - 2]);

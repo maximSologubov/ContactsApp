@@ -18,18 +18,22 @@
    
 
     <ContentPage.ToolbarItems>
+        
         <ToolbarItem Order="Primary"                     
                      Priority="0"
                      IconImageSource="sign_out.png" 
                      Command="{Binding LogOutTapCommand}" />
+        
         <ToolbarItem Order="Primary"                     
                      Priority="1"
                      IconImageSource="settings.png"
                      Command="{Binding SettingsTapCommand}" />
+        
     </ContentPage.ToolbarItems>
   
     
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -42,6 +46,7 @@
                VerticalTextAlignment="Center"
                VerticalOptions="CenterAndExpand"
                IsVisible="False">
+            
             <Label.Triggers>
                 <DataTrigger TargetType="Label"
                              Binding="{Binding IsVisible}"
@@ -50,6 +55,7 @@
                             Value="True"/>
                 </DataTrigger>
             </Label.Triggers>
+            
         </Label>
 
         <ListView x:Name="listView"
@@ -58,6 +64,7 @@
                   SelectionMode="None"
                   SeparatorVisibility="None"
                   IsVisible="True">
+            
             <ListView.Behaviors>
                 <bh:EventToCommandBehavior 
                     EventName="ItemTapped"
@@ -87,33 +94,40 @@
                         </ViewCell.ContextActions>
 
                         <ViewCell.View>
-
                             <Grid ColumnDefinitions="0.4*, *"
                                   Padding="15">
+                                
                                 <Image Source="{Binding ImagePath}"
                                        Margin="10, 0, 5, 0"
                                        HeightRequest="40"/>
+                                
                                 <StackLayout Spacing="10"
                                              Grid.Column="1"
                                              VerticalOptions="CenterAndExpand"
                                              HorizontalOptions="CenterAndExpand"
                                              Margin="5, 0, 100, 0">
+                                    
                                     <Label Text="{Binding NickName}"
                                            FontAttributes="Bold" 
                                            FontSize="Medium"
                                            TextColor="{x:DynamicResource ListUserLabelColor}"/>
+                                    
                                     <Label Text="{Binding Name}"
                                            FontSize="Medium"
                                            TextColor="{x:DynamicResource ListUserLabelColor}"/>
+                                    
                                     <Label Text="{Binding CreationTime}"
                                            FontSize="Small"
                                            TextColor="{x:DynamicResource ListUserLabelColor}"/>
+                                    
                                 </StackLayout>
-                            </Grid>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
+                                
+                            </Grid>                            
+                        </ViewCell.View>                        
+                    </ViewCell>                    
+                </DataTemplate>                
             </ListView.ItemTemplate>
+            
         </ListView>
         <Button Grid.Row="0"                 
                 BorderColor="{x:DynamicResource AddButtonBorderColor}"

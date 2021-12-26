@@ -7,13 +7,13 @@ namespace Contact_App.Behaviors
 {
     public class BehaviorBase<T> : Behavior<T> where T : BindableObject
     {
-        #region Properties
+        #region --- Properties ---
 
         public T AssociatedObject { get; private set; }
 
         #endregion
 
-        #region Overrides
+        #region --- Overrides ---
 
         protected override void OnAttachedTo(T bindable)
         {
@@ -25,16 +25,12 @@ namespace Contact_App.Behaviors
 
             bindable.BindingContextChanged += OnBindingContextChanged;
         }
-
-
         protected override void OnDetachingFrom(T bindable)
         {
             base.OnDetachingFrom(bindable);
             bindable.BindingContextChanged -= OnBindingContextChanged;
             AssociatedObject = null;
         }
-
-
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
@@ -43,11 +39,10 @@ namespace Contact_App.Behaviors
 
         #endregion
 
-        #region Private helpers
+        #region --- Private helpers ---
 
         private void OnBindingContextChanged(object sender, EventArgs e) => OnBindingContextChanged();
 
         #endregion
-
     }
 }

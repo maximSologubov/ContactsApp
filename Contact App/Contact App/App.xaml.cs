@@ -23,12 +23,12 @@ using Contact_App.Resources;
 namespace Contact_App
 {
     public partial class App : PrismApplication
-    {
-        
+    {        
         public App(IPlatformInitializer initializer = null) : base(initializer) 
         {
 
         }
+
         #region --- Private fields
 
         private ISettinngsManager _settinngsManager;
@@ -42,13 +42,9 @@ namespace Contact_App
         #region --- Properties ---
 
         public ISettinngsManager SettingsManager => _settinngsManager ??= Container.Resolve<SettingsManager>();
-
         public IRepository Repository => repository ??= Container.Resolve<Repository>();
-
         public IDbService DbService => dbService ??= Container.Resolve<DbService>();
-
         public IRegistration Registration => registration ??= Container.Resolve<Registration>();
-
         public IAuthorization AuthorizationService => authorizationService ??= Container.Resolve<Authorization>();
 
         #endregion
@@ -85,7 +81,6 @@ namespace Contact_App
             containerRegistry.RegisterForNavigation<AddEditProfilePage, AddEditProfileViewModel>();
 
             // dialogs
-
             containerRegistry.RegisterDialog<ItemTappedDialog, ItemTappedDialogModel>();
         }
 
@@ -103,6 +98,7 @@ namespace Contact_App
 
             if (string.IsNullOrEmpty(SettingsManager.SortListBy))
                 SettingsManager.SortListBy = "Name"; 
+
             if (string.IsNullOrEmpty(SettingsManager.Language))
                 SettingsManager.Language = "en";
 
@@ -111,28 +107,26 @@ namespace Contact_App
             else
                 NavigationService.NavigateAsync("NavigationPage/MainListView");
 
-
-
-
         }
         #endregion
 
-        #region Private helpers
+        #region --- Private helpers ---
 
         private void ResourceLoader()
         {
             ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+
             switch (SettingsManager.DarkTheme)
             {
                 case false:
                     mergedDictionaries.Add(new LightTheme());
                     break;
+
                 case true:
                     mergedDictionaries.Add(new DarkTheme());
                     break;
             }
         }
-
         #endregion
     }
 }

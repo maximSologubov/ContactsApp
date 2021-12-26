@@ -25,7 +25,6 @@ namespace Contact_App.ViewModels
             _registration = registration;
         }
 
-
         #region --- Private fields ---
 
         private string _login;
@@ -43,7 +42,6 @@ namespace Contact_App.ViewModels
         #endregion
 
         #region  --- Properties ---
-
         public string Login
         {
             get => _login;
@@ -68,7 +66,6 @@ namespace Contact_App.ViewModels
         #endregion
 
         #region  --- Private helpers ---
-
         private async void RegistrationNewUser()
         {
             try
@@ -83,22 +80,26 @@ namespace Contact_App.ViewModels
                         Password = "";
                         ConfirmPassword = "";
                         break;
+
                     case CodeUserAuthResult.InvalidPassword:
                         UserDialogs.Instance.Alert(Resource.InvalidPassword);
                         Password = "";
                         ConfirmPassword = "";
                         break;
+
                     case CodeUserAuthResult.PasswordMismatch:
                         UserDialogs.Instance.Alert(Resource.PasswordMissMatch);
                         Password = "";
                         ConfirmPassword = "";
                         break;
+
                     case CodeUserAuthResult.LoginTaken:
                         UserDialogs.Instance.Alert(Resource.LoginTaken);
                         Login = "";
                         Password = "";
                         ConfirmPassword = "";
                         break;
+
                     case CodeUserAuthResult.Passed:
                         UserDialogs.Instance.Alert(Resource.AuthenticationSuccess);
                         await DbService.InsertDataAsync(new UserModel
@@ -127,6 +128,7 @@ namespace Contact_App.ViewModels
         protected override void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
+
             if (args.PropertyName == nameof(Login) || args.PropertyName == nameof(Password) || args.PropertyName == nameof(ConfirmPassword))
             {
                 if (!string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(ConfirmPassword))
@@ -139,6 +141,7 @@ namespace Contact_App.ViewModels
                 }
             }
         }
+
         #endregion
 
     }

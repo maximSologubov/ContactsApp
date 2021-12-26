@@ -24,14 +24,13 @@ namespace Contact_App.Services.Repository
             });
         }
 
-        #region Private fields
+        #region --- Private fields ---
 
         private Lazy<SQLiteAsyncConnection> database;
 
         #endregion
 
-
-        #region Public methods
+        #region --- Public methods ---
 
 
         public Task<int> DeleteAsync<T>(T entity) where T : IEntityBase, new() => database.Value.DeleteAsync(entity);

@@ -5,59 +5,66 @@
                 xmlns:resources="clr-namespace:Contact_App.Resources"
                 BackgroundColor="{DynamicResource PageBackgroundColor}"
                 Title="{Binding Title}">
-
-
+    
         <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <StackLayout  Margin="30" 
-                      VerticalOptions="Center" 
-                      Spacing="15">
-            <Entry Placeholder="Login"  
-                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
-                   ClearButtonVisibility="WhileEditing"
-                   Text="{Binding Login}"
-                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"
-                   TextColor="{x:DynamicResource EntryTextColor}"/>            
-            <Entry Placeholder="Password"
-                   PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
-                   IsPassword="True" 
-                   ClearButtonVisibility="WhileEditing"
-                   Text="{Binding Password}"
-                   TextColor="{x:DynamicResource EntryTextColor}"
-                   BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
-        </StackLayout>
-
-        <StackLayout Grid.Row="1" 
-                     Margin="30">
-
-            <Button Text="{x:Static resources:Resource.SignInButtonText}" 
-                    BackgroundColor="{DynamicResource SignButtonColor}" 
-                    BorderWidth="1" 
-                    BorderColor="{DynamicResource SignButtonBorderColor}"
-                    Command="{Binding OnSignInTapCommand}"
-                    IsEnabled="{Binding IsButtonSignInEnabled}">
-            </Button>
             
-            <Label HorizontalOptions="Center" 
-                   VerticalOptions="CenterAndExpand">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="{x:Static resources:Resource.SignUpLinkText}" 
-                              TextColor="{DynamicResource LinkTextColor}"
-                              TextDecorations="Underline"
-                              FontSize="Medium">
-                            <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OnSignUpTapCommand}"/>
-                            </Span.GestureRecognizers>
-                        </Span>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>
-    </Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout  Margin="30" 
+                          VerticalOptions="Center" 
+                          Spacing="15">
+            
+                <Entry Placeholder="Login"  
+                       PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
+                       ClearButtonVisibility="WhileEditing"
+                       Text="{Binding Login}"
+                       BackgroundColor="{x:DynamicResource EntryBackgroundColor}"
+                       TextColor="{x:DynamicResource EntryTextColor}"/>   
+            
+                <Entry Placeholder="Password"
+                       PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
+                       IsPassword="True" 
+                       ClearButtonVisibility="WhileEditing"
+                       Text="{Binding Password}"
+                       TextColor="{x:DynamicResource EntryTextColor}"
+                       BackgroundColor="{x:DynamicResource EntryBackgroundColor}"/>
+            
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" 
+                         Margin="30">
+
+                <Button Text="{x:Static resources:Resource.SignInButtonText}" 
+                        BackgroundColor="{DynamicResource SignButtonColor}" 
+                        BorderWidth="1" 
+                        BorderColor="{DynamicResource SignButtonBorderColor}"
+                        Command="{Binding OnSignInTapCommand}"
+                        IsEnabled="{Binding IsButtonSignInEnabled}">
+                </Button>
+            
+                <Label HorizontalOptions="Center" 
+                       VerticalOptions="CenterAndExpand">
+                    
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static resources:Resource.SignUpLinkText}" 
+                                  TextColor="{DynamicResource LinkTextColor}"
+                                  TextDecorations="Underline"
+                                  FontSize="Medium">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnSignUpTapCommand}"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    
+                </Label>
+            
+            </StackLayout>
+            
+        </Grid>
     
 </ContentPage>

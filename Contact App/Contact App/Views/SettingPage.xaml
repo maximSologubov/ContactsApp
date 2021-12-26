@@ -18,6 +18,7 @@
         <StackLayout Grid.Row="0"
                      RadioButtonGroup.GroupName="SortSelect"
                      RadioButtonGroup.SelectedValue="{Binding SortSelection}">
+            
             <Label Text="{x:Static resources:Resource.LabelSortListBy}"
                    FontSize="32"
                    TextColor="{x:DynamicResource LabelSortColor}"/>            
@@ -25,16 +26,20 @@
             <RadioButton Content="{x:Static resources:Resource.RadioName}"
                          Value="Name"
                          TextColor="{x:DynamicResource RadioButtonColor}"/>
+            
             <RadioButton Content="{x:Static resources:Resource.RadioNickName}"
                          Value="NickName"
                          TextColor="{x:DynamicResource RadioButtonColor}"/>
+            
             <RadioButton Content="{x:Static resources:Resource.RadioCreation}"
                          Value="Date creation"
                          TextColor="{x:DynamicResource RadioButtonColor}"/>
         </StackLayout>
+        
         <StackLayout Grid.Row="1"
                      RadioButtonGroup.GroupName="LanguageSelect"
                      RadioButtonGroup.SelectedValue="{Binding LanguageSelection}">
+            
             <Label Text="{x:Static resources:Resource.LabelSelectLanguage}"
                    FontSize="32"
                    TextColor="{x:DynamicResource LabelSelectLanguageTextColor}"/>
@@ -42,6 +47,7 @@
             <RadioButton Content="{x:Static resources:Resource.EnglishLangText}"
                          Value="en"
                          TextColor="{x:DynamicResource RadioButtonColor}"/>
+            
             <RadioButton Content="{x:Static resources:Resource.RussianLangText}"
                          Value="ru"
                          TextColor="{x:DynamicResource RadioButtonColor}"/>
@@ -63,6 +69,7 @@
                    FontSize="20"
                    HorizontalOptions="EndAndExpand"
                    VerticalOptions="Center"/>
+            
             <Switch x:Name="switch"
                     Grid.Column="2"
                     IsToggled="{Binding IsDark}"
@@ -70,6 +77,7 @@
                     HorizontalOptions="Center"
                     >
             </Switch>
+            
             <Label Grid.Column="3"
                    Text="{x:Static resources:Resource.LabelDarkTheme}"
                    TextColor="{x:DynamicResource LabelThemeTextColor}"
@@ -78,5 +86,7 @@
                    VerticalOptions="Center"/>
 
         </Grid>
+        
     </Grid>
+    
 </ContentPage>

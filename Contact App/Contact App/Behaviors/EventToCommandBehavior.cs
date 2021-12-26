@@ -9,14 +9,13 @@ namespace Contact_App.Behaviors
 {
     public class EventToCommandBehavior : BehaviorBase<ListView>
     {
-        #region Private fields
+        #region --- Private fields ---
 
         private Delegate eventHandler;
 
         #endregion
 
-
-        #region Public fields
+        #region --- Public fields ---
 
         public static readonly BindableProperty EventNameProperty = BindableProperty.Create("EventName", typeof(string), typeof(EventToCommandBehavior), null, propertyChanged: OnEventNameChanged);
         public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(ICommand), typeof(EventToCommandBehavior), null);
@@ -25,8 +24,7 @@ namespace Contact_App.Behaviors
 
         #endregion
 
-
-        #region Properties
+        #region --- Properties ---
 
         public string EventName
         {
@@ -54,8 +52,7 @@ namespace Contact_App.Behaviors
 
         #endregion
 
-
-        #region Overrides
+        #region --- Overrides ---
 
         protected override void OnAttachedTo(ListView bindable)
         {
@@ -71,8 +68,7 @@ namespace Contact_App.Behaviors
 
         #endregion
 
-
-        #region Private helpers
+        #region --- Private helpers ---
 
         private void RegisterEvent(string name)
         {
@@ -87,8 +83,6 @@ namespace Contact_App.Behaviors
             eventHandler = methodInfo.CreateDelegate(eventInfo.EventHandlerType, this);
             eventInfo.AddEventHandler(AssociatedObject, eventHandler);
         }
-
-
         private void DeregisterEvent(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -103,8 +97,6 @@ namespace Contact_App.Behaviors
             eventInfo.RemoveEventHandler(AssociatedObject, eventHandler);
             eventHandler = null;
         }
-
-
         private void OnEvent(object sender, object eventArgs)
         {
             if (Command == null)
@@ -120,8 +112,6 @@ namespace Contact_App.Behaviors
             if (Command.CanExecute(resolvedParameter))
                 Command.Execute(resolvedParameter);
         }
-
-
         private static void OnEventNameChanged(BindableObject bindable, object oldValue, object newValue)
         {
             EventToCommandBehavior behavior = (EventToCommandBehavior)bindable;
@@ -134,7 +124,6 @@ namespace Contact_App.Behaviors
             behavior.DeregisterEvent(oldEventName);
             behavior.RegisterEvent(newName);
         }
-
 
         #endregion
     }
