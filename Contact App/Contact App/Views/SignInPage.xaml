@@ -16,15 +16,15 @@
             <StackLayout  Margin="30" 
                           VerticalOptions="Center" 
                           Spacing="15">
-            
-                <Entry Placeholder="Login"  
+
+                <Entry Placeholder="{x:Static resources:Resource.LoginText}"  
                        PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                        ClearButtonVisibility="WhileEditing"
                        Text="{Binding Login}"
                        BackgroundColor="{x:DynamicResource EntryBackgroundColor}"
-                       TextColor="{x:DynamicResource EntryTextColor}"/>   
-            
-                <Entry Placeholder="Password"
+                       TextColor="{x:DynamicResource EntryTextColor}"/>
+
+                <Entry Placeholder="{x:Static resources:Resource.PasswordText}"
                        PlaceholderColor="{x:DynamicResource EntryPlaceholderColor}"
                        IsPassword="True" 
                        ClearButtonVisibility="WhileEditing"
