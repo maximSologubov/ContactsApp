@@ -15,10 +15,8 @@ using Xamarin.Forms.Xaml;
 using Contact_App.Dialogs;
 using Contact_App.Themes;
 using Contact_App.Resources;
-using Contact_App.Services.Localization;
 using Xamarin.CommunityToolkit.Helpers;
 using System.Globalization;
-using Contact_App.Resources;
 
 namespace Contact_App
 {
